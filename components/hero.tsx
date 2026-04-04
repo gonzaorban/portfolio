@@ -33,7 +33,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-balance"
         >
-          <span className="text-foreground">Gonza</span>{" "}
+          <span className="text-foreground">Gonzalo Tomás</span>{" "}
           <span className="text-primary">Orban</span>
         </motion.h1>
 
