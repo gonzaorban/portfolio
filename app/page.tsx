@@ -3,6 +3,7 @@ import { ResearchSpotlight } from "@/components/research-spotlight"
 import { CybersecurityHub } from "@/components/cybersecurity-hub"
 import { ProjectBento } from "@/components/project-bento"
 import { TechStack } from "@/components/tech-stack"
+import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <CybersecurityHub />
       <ProjectBento />
       <TechStack />
+      <Contact />
       <Footer />
     </main>
   )
