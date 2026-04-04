@@ -1,32 +1,48 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Lock, Binary, Globe, Key, ExternalLink, Target } from "lucide-react"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin } from "lucide-react"
 
 const platforms = [
   {
-    name: "SoftwareSeguro (Hacklab)",
-    description: "Plataforma de entrenamiento en seguridad ofensiva",
+    name: "SoftwareSeguro",
+    subtitle: "Hacklab UTN",
+    description: "Plataforma de entrenamiento",
+    icon: Shield,
     color: "text-purple-400",
-    bgColor: "bg-purple-400/10",
-    link: "https://softwareseguro.hacklab.com.ar",
-    hasProfile: false,
+    link: "https://app.softwareseguro.com.ar/ranking",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
+    linkedinText: "Ver publicación de competencia",
   },
   {
     name: "HackTheBox",
-    description: "Laboratorios avanzados de pentesting",
+    subtitle: null,
+    description: "Ver mi perfil",
+    icon: Terminal,
     color: "text-green-400",
-    bgColor: "bg-green-400/10",
     link: "https://app.hackthebox.com/profile/2634163",
-    hasProfile: true,
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
+    linkedinText: "Ver publicación de competencia",
   },
   {
     name: "TryHackMe",
-    description: "Plataforma de aprendizaje en ciberseguridad",
+    subtitle: null,
+    description: "Ver mi perfil",
+    icon: Target,
     color: "text-red-400",
-    bgColor: "bg-red-400/10",
     link: "https://tryhackme.com/p/gonzaorban",
-    hasProfile: true,
+    linkedinUrl: null,
+    linkedinText: null,
+  },
+  {
+    name: "picoCTF",
+    subtitle: "CMU",
+    description: "Ver mi perfil",
+    icon: Flag,
+    color: "text-blue-400",
+    link: "https://play.picoctf.org/users/gonzaorban",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
+    linkedinText: "Ver publicación de competencia",
   },
 ]
 
@@ -72,34 +88,62 @@ export function CybersecurityHub() {
           <h2 className="text-2xl md:text-3xl font-bold">Hub de Ciberseguridad</h2>
         </motion.div>
 
-        {/* Platforms */}
-        <div className="grid gap-4 md:grid-cols-3 mb-8">
-          {platforms.map((platform, index) => (
-            <motion.a
-              key={platform.name}
-              href={platform.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="rounded-lg border border-border/50 p-5 glass glass-hover transition-all duration-300 group flex items-center gap-4"
-            >
-              <div className={`w-10 h-10 rounded-lg ${platform.bgColor} flex items-center justify-center shrink-0`}>
-                <Target className={`w-5 h-5 ${platform.color}`} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className={`font-semibold text-sm ${platform.color} group-hover:brightness-110 transition-all truncate`}>
-                  {platform.name}
-                </h3>
-                <p className="text-xs text-muted-foreground truncate">
-                  {platform.hasProfile ? "Ver mi perfil" : platform.description}
-                </p>
-              </div>
-              <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-            </motion.a>
-          ))}
+        {/* Platforms Grid */}
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+          {platforms.map((platform, index) => {
+            const IconComponent = platform.icon
+            return (
+              <motion.div
+                key={platform.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-xl border border-border/40 p-5 bg-secondary/10 hover:bg-secondary/20 hover:border-border/60 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 group"
+              >
+                {/* Icon and Title Row */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center shrink-0`}>
+                    <IconComponent className={`w-5 h-5 ${platform.color}`} />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors truncate">
+                      {platform.name}
+                    </h3>
+                    {platform.subtitle && (
+                      <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                        {platform.subtitle}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Profile Link */}
+                <a
+                  href={platform.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+                >
+                  <span>{platform.description}</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+
+                {/* LinkedIn Link */}
+                {platform.linkedinUrl && (
+                  <a
+                    href={platform.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-[11px] text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                  >
+                    <Linkedin className="w-3 h-3" />
+                    <span>{platform.linkedinText}</span>
+                  </a>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* Skills Grid */}

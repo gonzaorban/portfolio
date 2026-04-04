@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, FlaskConical, ExternalLink, FileText, Award } from "lucide-react"
+import { BookOpen, FlaskConical, FileText, Award, Linkedin } from "lucide-react"
 
 export function ResearchSpotlight() {
   return (
@@ -84,6 +84,17 @@ export function ResearchSpotlight() {
                 </span>
               ))}
             </div>
+            
+            {/* LinkedIn Link */}
+            <a
+              href="https://www.linkedin.com/posts/gonzaorban_presentamos-nuestro-paper-en-el-13-conaiisi-activity-7393672118036496384-Xelh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+            >
+              <Linkedin className="w-4 h-4" />
+              Ver publicación en LinkedIn
+            </a>
           </motion.div>
         </div>
 
