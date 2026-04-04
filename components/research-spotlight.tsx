@@ -66,7 +66,7 @@ export function ResearchSpotlight() {
                 <Microscope className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <span className="text-xs font-mono text-accent uppercase tracking-wider">Propuesta de Arquitectura</span>
+                <span className="text-xs font-mono text-accent uppercase tracking-wider">Presentación Paper</span>
                 <h3 className="text-base font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">
                   Arquitectura híbrida para la detección de incidentes de seguridad en logs utilizando embeddings y aprendizaje automático clásico
                 </h3>
