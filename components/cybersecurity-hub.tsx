@@ -1,31 +1,40 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Lock, Binary, Globe, Key, ExternalLink, Target } from "lucide-react"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink } from "lucide-react"
+import Image from "next/image"
 
 const platforms = [
   {
-    name: "SoftwareSeguro (Hacklab)",
-    description: "Plataforma de entrenamiento en seguridad ofensiva",
-    color: "text-purple-400",
-    bgColor: "bg-purple-400/10",
+    name: "SoftwareSeguro",
+    subtitle: "Hacklab",
+    description: "Plataforma de entrenamiento",
+    logo: "/logos/softwareseguro.jpg",
     link: "https://softwareseguro.hacklab.com.ar",
     hasProfile: false,
   },
   {
     name: "HackTheBox",
-    description: "Laboratorios avanzados de pentesting",
-    color: "text-green-400",
-    bgColor: "bg-green-400/10",
+    subtitle: null,
+    description: "Ver mi perfil",
+    logo: "/logos/hackthebox.jpg",
     link: "https://app.hackthebox.com/profile/2634163",
     hasProfile: true,
   },
   {
     name: "TryHackMe",
-    description: "Plataforma de aprendizaje en ciberseguridad",
-    color: "text-red-400",
-    bgColor: "bg-red-400/10",
+    subtitle: null,
+    description: "Ver mi perfil",
+    logo: "/logos/tryhackme.jpg",
     link: "https://tryhackme.com/p/gonzaorban",
+    hasProfile: true,
+  },
+  {
+    name: "picoCTF",
+    subtitle: "CMU",
+    description: "Ver mi perfil",
+    logo: "/logos/picoctf.jpg",
+    link: "https://play.picoctf.org/users/gonzaorban",
     hasProfile: true,
   },
 ]
@@ -72,8 +81,8 @@ export function CybersecurityHub() {
           <h2 className="text-2xl md:text-3xl font-bold">Hub de Ciberseguridad</h2>
         </motion.div>
 
-        {/* Platforms */}
-        <div className="grid gap-4 md:grid-cols-3 mb-8">
+        {/* Platforms Grid - 2x2 on mobile, 4 columns on large */}
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-10">
           {platforms.map((platform, index) => (
             <motion.a
               key={platform.name}
@@ -84,20 +93,48 @@ export function CybersecurityHub() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="rounded-lg border border-border/50 p-5 glass glass-hover transition-all duration-300 group flex items-center gap-4"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 0 20px rgba(16, 185, 129, 0.15)"
+              }}
+              className="relative overflow-hidden rounded-xl border border-border/40 p-5 bg-background/40 backdrop-blur-md hover:border-primary/50 transition-all duration-300 group flex flex-col items-center text-center"
             >
-              <div className={`w-10 h-10 rounded-lg ${platform.bgColor} flex items-center justify-center shrink-0`}>
-                <Target className={`w-5 h-5 ${platform.color}`} />
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Logo Container */}
+              <div className="relative w-full h-16 mb-4 flex items-center justify-center">
+                <Image
+                  src={platform.logo}
+                  alt={`${platform.name} logo`}
+                  width={120}
+                  height={48}
+                  className="object-contain max-h-12 w-auto brightness-90 group-hover:brightness-110 transition-all duration-300"
+                />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className={`font-semibold text-sm ${platform.color} group-hover:brightness-110 transition-all truncate`}>
+              
+              {/* Platform Info */}
+              <div className="relative z-10 flex-1 flex flex-col justify-center">
+                <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
                   {platform.name}
                 </h3>
-                <p className="text-xs text-muted-foreground truncate">
-                  {platform.hasProfile ? "Ver mi perfil" : platform.description}
+                {platform.subtitle && (
+                  <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                    {platform.subtitle}
+                  </span>
+                )}
+                <p className="text-xs text-muted-foreground mt-1 group-hover:text-foreground/70 transition-colors">
+                  {platform.description}
                 </p>
               </div>
-              <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+              
+              {/* External Link Icon */}
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <ExternalLink className="w-3.5 h-3.5 text-primary" />
+              </div>
+              
+              {/* Bottom border glow */}
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.a>
           ))}
         </div>
