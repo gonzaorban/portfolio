@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, FlaskConical, FileText, Award, Linkedin } from "lucide-react"
+import { BookOpen, FlaskConical, Award, Linkedin, Microscope } from "lucide-react"
 
 export function ResearchSpotlight() {
   return (
@@ -63,21 +63,26 @@ export function ResearchSpotlight() {
           >
             <div className="flex items-start gap-4 mb-4">
               <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                <FileText className="w-6 h-6 text-accent" />
+                <Microscope className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <span className="text-xs font-mono text-accent uppercase tracking-wider">Publicación</span>
+                <span className="text-xs font-mono text-accent uppercase tracking-wider">Congreso Nacional - CoNaIISI</span>
                 <h3 className="text-lg font-semibold mt-1 group-hover:text-accent transition-colors">
                   Arquitectura híbrida para la detección de incidentes de seguridad en logs utilizando embeddings y aprendizaje automático clásico
                 </h3>
               </div>
             </div>
+            
+            {/* Congress Context */}
+            <p className="text-xs text-accent/80 font-medium mb-3">
+              Presentado en el 13° Congreso Nacional de Ingeniería Informática y Sistemas de Información (Organizado por RIISIC y UTN-FRC)
+            </p>
+            
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Un enfoque novedoso que combina embeddings y Machine Learning clásico para la detección 
-              de incidentes de seguridad en logs de sistemas, mejorando la precisión en la identificación de amenazas.
+              Investigación realizada junto a Tomas Duarte donde propusimos un enfoque que combina el análisis semántico de LLMs (Embeddings) con la eficiencia de clasificadores clásicos (Random Forest, SVM). El sistema permite detectar anomalías en logs de seguridad sin depender de grandes volúmenes de datos etiquetados, equilibrando precisión y costo computacional para entornos de SOC reales.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {["Embeddings", "Machine Learning", "Logs", "Detección de Anomalías"].map((tag) => (
+              {["LLMs", "Random Forest / SVM", "SOC Ready", "Investigación"].map((tag) => (
                 <span key={tag} className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-muted-foreground">
                   {tag}
                 </span>
