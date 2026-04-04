@@ -23,7 +23,7 @@ export function Footer() {
           >
             <span className="font-semibold text-foreground">Gonza Orban</span>
             <span className="text-muted-foreground">·</span>
-            <span className="text-sm text-muted-foreground">Backend & Security</span>
+            <span className="text-sm text-muted-foreground">Backend & Seguridad</span>
           </motion.div>
 
           {/* Social Links */}
@@ -57,7 +57,7 @@ export function Footer() {
             className="flex items-center gap-2 text-sm"
           >
             <Circle className="w-2 h-2 fill-primary text-primary animate-pulse" />
-            <span className="font-mono text-muted-foreground">System Status:</span>
+            <span className="font-mono text-muted-foreground">Estado del Sistema:</span>
             <span className="font-mono text-primary">Online</span>
           </motion.div>
         </div>
@@ -71,7 +71,7 @@ export function Footer() {
           className="mt-6 pt-6 border-t border-border/20 text-center"
         >
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Gonza Orban. Built with Next.js & Tailwind CSS.
+            © {new Date().getFullYear()} Gonza Orban. Desarrollado con Next.js & Tailwind CSS.
           </p>
         </motion.div>
       </div>

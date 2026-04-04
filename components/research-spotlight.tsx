@@ -18,7 +18,7 @@ export function ResearchSpotlight() {
           className="flex items-center gap-3 mb-8"
         >
           <FlaskConical className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl md:text-3xl font-bold">Research Spotlight</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Investigación</h2>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -35,15 +35,15 @@ export function ResearchSpotlight() {
                 <Award className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <span className="text-xs font-mono text-primary uppercase tracking-wider">Research Fellowship</span>
+                <span className="text-xs font-mono text-primary uppercase tracking-wider">Beca de Investigación</span>
                 <h3 className="text-lg font-semibold mt-1 group-hover:text-primary transition-colors">
-                  CInApTIC Research Grant
+                  Beca CInApTIC
                 </h3>
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Developing a comprehensive Cybersecurity Framework including security controls, architectures, 
-              and threat intelligence systems for enterprise environments.
+              Desarrollo de un Framework de Ciberseguridad integral que incluye controles de seguridad, 
+              arquitecturas y sistemas de inteligencia de amenazas para entornos empresariales.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {["Threat Intel", "Security Controls", "Enterprise Security"].map((tag) => (
@@ -67,18 +67,18 @@ export function ResearchSpotlight() {
                 <FileText className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <span className="text-xs font-mono text-accent uppercase tracking-wider">Publication</span>
+                <span className="text-xs font-mono text-accent uppercase tracking-wider">Publicación</span>
                 <h3 className="text-lg font-semibold mt-1 group-hover:text-accent transition-colors">
-                  Hybrid Architecture for Security Incident Detection
+                  Arquitectura híbrida para la detección de incidentes de seguridad en logs utilizando embeddings y aprendizaje automático clásico
                 </h3>
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              A novel approach combining embeddings and classical machine learning for security 
-              incident detection in system logs, improving threat identification accuracy.
+              Un enfoque novedoso que combina embeddings y Machine Learning clásico para la detección 
+              de incidentes de seguridad en logs de sistemas, mejorando la precisión en la identificación de amenazas.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {["Embeddings", "ML", "Log Analysis", "Anomaly Detection"].map((tag) => (
+              {["Embeddings", "Machine Learning", "Logs", "Detección de Anomalías"].map((tag) => (
                 <span key={tag} className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-muted-foreground">
                   {tag}
                 </span>
@@ -97,8 +97,8 @@ export function ResearchSpotlight() {
         >
           <BookOpen className="w-5 h-5 text-muted-foreground shrink-0" />
           <p className="text-sm text-muted-foreground">
-            <span className="text-foreground font-medium">4th Year Student</span> — Information Systems Engineering at UTN 
-            (Universidad Tecnológica Nacional), Resistencia Regional Faculty.
+            <span className="text-foreground font-medium">Estudiante de 4to Año</span> — Ingeniería en Sistemas de Información en UTN 
+            (Universidad Tecnológica Nacional), Facultad Regional Resistencia, Chaco.
           </p>
         </motion.div>
       </div>
