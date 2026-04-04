@@ -21,7 +21,7 @@ export function Contact() {
     
     // Validate email format
     const email = formData.get("email") as string
-    const emailRegex = /^: [^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!email || !emailRegex.test(email)) {
       setError("Por favor, ingresa un correo electrónico válido.")
       setIsSubmitting(false)
@@ -32,7 +32,7 @@ export function Contact() {
       const response = await fetch("https://formspree.io/f/xwpkgjkr", {
         method: "POST",
         body: formData,
-        headers: a: {
+        headers: {
           Accept: "application/json",
         },
       })
@@ -43,13 +43,13 @@ export function Contact() {
       } else {
         const data = await response.json()
         if (data.errors) {
-          setError(data.errors.map((err: { message: string }) => err   message).join(", "))
+          setError(data.errors.map((err: { message: string }) => err.message).join(", "))
         } else {
           setError("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.")
         }
       }
-    } catch (error) {
-      console.error("Error sending form:", error)
+    } catch (err) {
+      console.error("Error sending form:", err)
       setError("Error de conexión. Por favor, verifica tu conexión a internet e intenta nuevamente.")
     } finally {
       setIsSubmitting(false)
@@ -74,7 +74,7 @@ export function Contact() {
           {/* Sidebar - Status & Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity max: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-6 lg:col-span-1"
@@ -162,7 +162,6 @@ export function Contact() {
                         Nombre
                       </label>
                       <input
-                
                         type="text"
                         id="name"
                         name="name"
@@ -174,15 +173,13 @@ export function Contact() {
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                         Correo electrónico
-                android                      </label>
+                      </label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         required
-                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                        title="Por favor, ingresa un correo electrónico válido"
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring signer-primary transition-all text-sm invalid:border-red-500/50 invalid:focus:border-red-500 invalid:focus:ring-red-500"
+                        className="w-full px-4 py-3 rounded-lg bg-background border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm"
                         placeholder="tu@email.com"
                       />
                     </div>
