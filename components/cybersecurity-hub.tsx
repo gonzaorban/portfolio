@@ -1,41 +1,48 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Binary, Globe, Key, ExternalLink } from "lucide-react"
-import Image from "next/image"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin } from "lucide-react"
 
 const platforms = [
   {
     name: "SoftwareSeguro",
-    subtitle: "Hacklab",
+    subtitle: "Hacklab UTN",
     description: "Plataforma de entrenamiento",
-    logo: "/logos/softwareseguro.jpg",
-    link: "https://softwareseguro.hacklab.com.ar",
-    hasProfile: false,
+    icon: Shield,
+    color: "text-purple-400",
+    link: "https://app.softwareseguro.com.ar/ranking",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-activity-example",
+    linkedinText: "Ver publicación de competencia",
   },
   {
     name: "HackTheBox",
     subtitle: null,
     description: "Ver mi perfil",
-    logo: "/logos/hackthebox.jpg",
+    icon: Terminal,
+    color: "text-green-400",
     link: "https://app.hackthebox.com/profile/2634163",
-    hasProfile: true,
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_university-ctf-2025-activity-example",
+    linkedinText: "Ver publicación de competencia",
   },
   {
     name: "TryHackMe",
     subtitle: null,
     description: "Ver mi perfil",
-    logo: "/logos/tryhackme.jpg",
+    icon: Target,
+    color: "text-red-400",
     link: "https://tryhackme.com/p/gonzaorban",
-    hasProfile: true,
+    linkedinUrl: null,
+    linkedinText: null,
   },
   {
     name: "picoCTF",
     subtitle: "CMU",
     description: "Ver mi perfil",
-    logo: "/logos/picoctf.jpg",
+    icon: Flag,
+    color: "text-blue-400",
     link: "https://play.picoctf.org/users/gonzaorban",
-    hasProfile: true,
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_picoctf-2026-activity-example",
+    linkedinText: "Ver publicación de competencia",
   },
 ]
 
@@ -81,62 +88,62 @@ export function CybersecurityHub() {
           <h2 className="text-2xl md:text-3xl font-bold">Hub de Ciberseguridad</h2>
         </motion.div>
 
-        {/* Platforms Grid - 2x2 on mobile, 4 columns on large */}
-        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-10">
-          {platforms.map((platform, index) => (
-            <motion.a
-              key={platform.name}
-              href={platform.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 0 20px rgba(16, 185, 129, 0.15)"
-              }}
-              className="relative overflow-hidden rounded-xl border border-border/40 p-5 bg-background/40 backdrop-blur-md hover:border-primary/50 transition-all duration-300 group flex flex-col items-center text-center"
-            >
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Logo Container */}
-              <div className="relative w-full h-16 mb-4 flex items-center justify-center">
-                <Image
-                  src={platform.logo}
-                  alt={`${platform.name} logo`}
-                  width={120}
-                  height={48}
-                  className="object-contain max-h-12 w-auto brightness-90 group-hover:brightness-110 transition-all duration-300"
-                />
-              </div>
-              
-              {/* Platform Info */}
-              <div className="relative z-10 flex-1 flex flex-col justify-center">
-                <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
-                  {platform.name}
-                </h3>
-                {platform.subtitle && (
-                  <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-                    {platform.subtitle}
-                  </span>
+        {/* Platforms Grid */}
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+          {platforms.map((platform, index) => {
+            const IconComponent = platform.icon
+            return (
+              <motion.div
+                key={platform.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-xl border border-border/40 p-5 bg-secondary/10 hover:bg-secondary/20 hover:border-border/60 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 group"
+              >
+                {/* Icon and Title Row */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center shrink-0`}>
+                    <IconComponent className={`w-5 h-5 ${platform.color}`} />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors truncate">
+                      {platform.name}
+                    </h3>
+                    {platform.subtitle && (
+                      <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                        {platform.subtitle}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Profile Link */}
+                <a
+                  href={platform.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+                >
+                  <span>{platform.description}</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+
+                {/* LinkedIn Link */}
+                {platform.linkedinUrl && (
+                  <a
+                    href={platform.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-[11px] text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                  >
+                    <Linkedin className="w-3 h-3" />
+                    <span>{platform.linkedinText}</span>
+                  </a>
                 )}
-                <p className="text-xs text-muted-foreground mt-1 group-hover:text-foreground/70 transition-colors">
-                  {platform.description}
-                </p>
-              </div>
-              
-              {/* External Link Icon */}
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ExternalLink className="w-3.5 h-3.5 text-primary" />
-              </div>
-              
-              {/* Bottom border glow */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </motion.a>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* Skills Grid */}
