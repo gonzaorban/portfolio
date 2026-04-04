@@ -2,20 +2,31 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Send, Mail, Check, Circle, MessageSquare } from "lucide-react"
+import { Send, Mail, Check, Circle, MessageSquare, AlertCircle } from "lucide-react"
 
 const EMAIL = "gonzaorban@gmail.com"
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
     
     const form = e.currentTarget
     const formData = new FormData(form)
+    
+    // Validate email format
+    const email = formData.get("email") as string
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!email || !emailRegex.test(email)) {
+      setError("Por favor, ingresa un correo electrónico válido.")
+      setIsSubmitting(false)
+      return
+    }
     
     try {
       const response = await fetch("https://formspree.io/f/xwpkgjkr", {
@@ -29,9 +40,17 @@ export function Contact() {
       if (response.ok) {
         setIsSubmitted(true)
         form.reset()
+      } else {
+        const data = await response.json()
+        if (data.errors) {
+          setError(data.errors.map((err: { message: string }) => err.message).join(", "))
+        } else {
+          setError("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.")
+        }
       }
-    } catch (error) {
-      console.error("Error sending form:", error)
+    } catch (err) {
+      console.error("Error sending form:", err)
+      setError("Error de conexión. Por favor, verifica tu conexión a internet e intenta nuevamente.")
     } finally {
       setIsSubmitting(false)
     }
@@ -122,6 +141,21 @@ export function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Error Message */}
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-start gap-3 p-4 rounded-lg bg-red-500/10 border border-red-500/20"
+                    >
+                      <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-sm text-red-500 font-medium">Error al enviar</p>
+                        <p className="text-xs text-red-400 mt-1">{error}</p>
+                      </div>
+                    </motion.div>
+                  )}
+
                   <div className="grid gap-5 md:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">

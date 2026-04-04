@@ -36,7 +36,7 @@ const platforms = [
   },
   {
     name: "picoCTF",
-    subtitle: "CMU",
+    subtitle: null,
     description: "Ver mi perfil",
     icon: Flag,
     color: "text-blue-400",
