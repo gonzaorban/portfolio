@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 
 const commands = [
   { prompt: "$ whoami", output: ["gonza_orban"] },
-  { prompt: "$ cat role.txt", output: ["Backend Developer", "Security Researcher", "Software Architect"] },
+  { prompt: "$ cat rol.txt", output: ["Desarrollador Backend", "Investigador en Seguridad", "Arquitecto de Software"] },
   { prompt: "$ pwd", output: ["/home/gonza/resistencia-chaco-argentina"] },
-  { prompt: "$ cat status.txt", output: ["🎓 4th Year - Systems Engineering @ UTN", "🔬 CInApTIC Research Fellow"] },
+  { prompt: "$ cat estado.txt", output: ["4to Año - Ingeniería en Sistemas @ UTN", "Becario de Investigación CInApTIC"] },
 ]
 
 export function Terminal() {

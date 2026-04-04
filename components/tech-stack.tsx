@@ -12,14 +12,14 @@ const categories = [
     items: ["Python", "Django", "NestJS", "Node.js", "PostgreSQL", "MySQL", "Redis"],
   },
   {
-    title: "Security",
+    title: "Seguridad",
     icon: Shield,
     color: "text-accent",
     bgColor: "bg-accent/10",
     items: ["Keycloak", "OWASP", "Burp Suite", "Wireshark", "Nmap", "Ghidra", "IDA"],
   },
   {
-    title: "Tools",
+    title: "Herramientas",
     icon: Wrench,
     color: "text-yellow-400",
     bgColor: "bg-yellow-400/10",
@@ -39,7 +39,7 @@ export function TechStack() {
           className="flex items-center gap-3 mb-8"
         >
           <Layers className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl md:text-3xl font-bold">Tech Stack & Skills</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Stack Tecnológico</h2>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-3 mb-8">
@@ -84,16 +84,16 @@ export function TechStack() {
           <div className="rounded-lg border border-border/30 p-4 bg-secondary/20">
             <div className="flex items-center gap-3 mb-3">
               <Languages className="w-4 h-4 text-muted-foreground" />
-              <h4 className="font-medium text-sm">Languages</h4>
+              <h4 className="font-medium text-sm">Idiomas</h4>
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Spanish</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">Native</span>
+                <span className="text-sm text-muted-foreground">Español</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">Nativo</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">English</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent">A2 - Learning</span>
+                <span className="text-sm text-muted-foreground">Inglés</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent">Nivel A2 - En formación activa</span>
               </div>
             </div>
           </div>
@@ -102,11 +102,11 @@ export function TechStack() {
           <div className="rounded-lg border border-border/30 p-4 bg-secondary/20">
             <div className="flex items-center gap-3 mb-3">
               <BookOpen className="w-4 h-4 text-muted-foreground" />
-              <h4 className="font-medium text-sm">Continuous Learning</h4>
+              <h4 className="font-medium text-sm">Aprendizaje Continuo</h4>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Actively improving English proficiency while staying current with 
-              emerging security threats and backend development patterns.
+              Mejorando activamente mi nivel de inglés mientras me mantengo actualizado con las amenazas 
+              de seguridad emergentes y patrones de desarrollo Backend.
             </p>
           </div>
         </motion.div>

@@ -43,8 +43,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
         >
-          Backend Developer & Security Researcher building secure, scalable systems.
-          Passionate about software architecture and cybersecurity.
+          Desarrollando Sistemas Seguros y Escalables. Apasionado por la arquitectura de software y la ciberseguridad.
         </motion.p>
 
         <motion.div 

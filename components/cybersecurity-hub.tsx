@@ -6,14 +6,14 @@ import { Shield, Bug, Lock, Binary, Globe, Key, ExternalLink } from "lucide-reac
 const platforms = [
   {
     name: "TryHackMe",
-    description: "Learning platform for cybersecurity skills",
+    description: "Plataforma de aprendizaje en ciberseguridad",
     color: "text-red-400",
     bgColor: "bg-red-400/10",
     link: "#",
   },
   {
     name: "HackTheBox",
-    description: "Advanced penetration testing labs",
+    description: "Laboratorios avanzados de pentesting",
     color: "text-green-400",
     bgColor: "bg-green-400/10",
     link: "#",
@@ -23,8 +23,8 @@ const platforms = [
 const skills = [
   { icon: Binary, name: "Binary Exploitation", description: "Buffer overflows, ROP chains, format strings" },
   { icon: Globe, name: "Web Security", description: "IDOR, XSS, SQLi, SSRF, Authentication Bypass" },
-  { icon: Key, name: "Cryptography", description: "Encryption analysis, hash cracking, protocol weaknesses" },
-  { icon: Bug, name: "Reverse Engineering", description: "Malware analysis, binary patching, deobfuscation" },
+  { icon: Key, name: "Criptografía", description: "Análisis de cifrado, cracking de hashes, debilidades de protocolos" },
+  { icon: Bug, name: "Reverse Engineering", description: "Análisis de malware, binary patching, deobfuscación" },
 ]
 
 export function CybersecurityHub() {
@@ -39,7 +39,7 @@ export function CybersecurityHub() {
           className="flex items-center gap-3 mb-8"
         >
           <Shield className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl md:text-3xl font-bold">Cybersecurity Hub</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Hub de Ciberseguridad</h2>
         </motion.div>
 
         {/* Platforms */}
@@ -78,7 +78,7 @@ export function CybersecurityHub() {
           transition={{ duration: 0.5 }}
           className="text-lg font-semibold mb-4 text-muted-foreground"
         >
-          Security Skills
+          Habilidades en Seguridad
         </motion.h3>
         
         <div className="grid gap-4 sm:grid-cols-2">

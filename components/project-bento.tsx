@@ -6,15 +6,15 @@ import { Folder, ExternalLink, Code2, Trophy, Server, Users } from "lucide-react
 const projects = [
   {
     title: "Sixty Club",
-    description: "Full-stack web application for club management with modern UI and robust backend.",
+    description: "Aplicación web Fullstack para gestión de clubes con interfaz moderna y Backend robusto.",
     tech: ["Django", "Next.js", "PostgreSQL", "Tailwind"],
     icon: Users,
     span: "md:col-span-2",
     accent: "primary",
   },
   {
-    title: "Logistics Microservice",
-    description: "Scalable microservices architecture with secure authentication and authorization.",
+    title: "Microservicio de Logística",
+    description: "Arquitectura de microservicios escalable con autenticación y autorización segura.",
     tech: ["NestJS", "Keycloak", "MySQL", "Docker"],
     icon: Server,
     span: "md:col-span-1",
@@ -22,16 +22,16 @@ const projects = [
   },
   {
     title: "CTF Writeups",
-    description: "Documentation of CTF challenges solved on various platforms with detailed explanations.",
+    description: "Documentación de desafíos CTF resueltos en diversas plataformas con explicaciones detalladas.",
     tech: ["Binary Exploitation", "Web Security", "Crypto"],
     icon: Code2,
     span: "md:col-span-1",
     accent: "primary",
   },
   {
-    title: "Competitive Programming",
-    description: "Solutions and training for ICPC and TAP programming competitions.",
-    tech: ["ICPC", "TAP", "Algorithms", "C++"],
+    title: "Programación Competitiva",
+    description: "Soluciones y entrenamiento para competencias de programación ICPC y TAP.",
+    tech: ["ICPC", "TAP", "Algoritmos", "C++"],
     icon: Trophy,
     span: "md:col-span-2",
     accent: "accent",
@@ -50,7 +50,7 @@ export function ProjectBento() {
           className="flex items-center gap-3 mb-8"
         >
           <Folder className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl md:text-3xl font-bold">Projects</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Proyectos</h2>
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-3">
