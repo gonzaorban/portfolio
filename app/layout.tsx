@@ -14,28 +14,11 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Gonza Orban | Desarrollador Backend & Investigador en Seguridad',
-  description: 'Portfolio de Ingeniería de Software enfocado en Desarrollo Backend, Arquitectura de Software y Ciberseguridad. Estudiante de 4to año de Ingeniería en Sistemas de Información en UTN Resistencia, Chaco.',
+  title: 'Gonzalo Orban | Portfolio',
+  description: 'Portfolio de Gonzalo Orban - Estudiante de Ingeniería en Sistemas, Desarrollador Backend y Especialista en Ciberseguridad.',
   generator: 'v0.app',
-  keywords: ['Desarrollador Backend', 'Ciberseguridad', 'Arquitectura de Software', 'NestJS', 'Django', 'Investigación en Seguridad'],
-  authors: [{ name: 'Gonza Orban' }],
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  keywords: ['Desarrollador Backend', 'Ciberseguridad', 'Arquitectura de Software', 'NestJS', 'Django', 'Investigación en Seguridad', 'UTN', 'Portfolio'],
+  authors: [{ name: 'Gonzalo Orban' }],
 }
 
 export const viewport: Viewport = {
