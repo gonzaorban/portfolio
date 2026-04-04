@@ -42,11 +42,10 @@ export function ResearchSpotlight() {
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Desarrollo de un Framework de Ciberseguridad integral que incluye controles de seguridad, 
-              arquitecturas y sistemas de inteligencia de amenazas para entornos empresariales.
+              Desarrollo de un Esquema de Ciberseguridad (Controles, Arquitecturas e Inteligencia de Amenazas) para Entornos Empresariales.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {["Threat Intel", "Security Controls", "Enterprise Security"].map((tag) => (
+              {["Controles de Seguridad", "Arquitecturas", "Threat Intel"].map((tag) => (
                 <span key={tag} className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-muted-foreground">
                   {tag}
                 </span>
