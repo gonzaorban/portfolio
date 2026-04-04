@@ -9,21 +9,24 @@ const platforms = [
     description: "Plataforma de entrenamiento en seguridad ofensiva",
     color: "text-purple-400",
     bgColor: "bg-purple-400/10",
-    link: "#",
+    link: "https://softwareseguro.hacklab.com.ar",
+    hasProfile: false,
   },
   {
     name: "HackTheBox",
     description: "Laboratorios avanzados de pentesting",
     color: "text-green-400",
     bgColor: "bg-green-400/10",
-    link: "#",
+    link: "https://app.hackthebox.com/profile/2634163",
+    hasProfile: true,
   },
   {
     name: "TryHackMe",
     description: "Plataforma de aprendizaje en ciberseguridad",
     color: "text-red-400",
     bgColor: "bg-red-400/10",
-    link: "#",
+    link: "https://tryhackme.com/p/gonzaorban",
+    hasProfile: true,
   },
 ]
 
@@ -75,6 +78,8 @@ export function CybersecurityHub() {
             <motion.a
               key={platform.name}
               href={platform.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -88,7 +93,9 @@ export function CybersecurityHub() {
                 <h3 className={`font-semibold text-sm ${platform.color} group-hover:brightness-110 transition-all truncate`}>
                   {platform.name}
                 </h3>
-                <p className="text-xs text-muted-foreground truncate">{platform.description}</p>
+                <p className="text-xs text-muted-foreground truncate">
+                  {platform.hasProfile ? "Ver mi perfil" : platform.description}
+                </p>
               </div>
               <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
             </motion.a>

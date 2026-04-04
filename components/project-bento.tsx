@@ -13,7 +13,9 @@ import {
   GitBranch,
   Container,
   CheckCircle2,
-  Boxes
+  Boxes,
+  Trophy,
+  Github
 } from "lucide-react"
 
 interface ProjectHighlight {
@@ -31,6 +33,7 @@ interface Project {
   icon: typeof Shield
   span: string
   accent: "primary" | "accent"
+  repoUrl: string
 }
 
 const projects: Project[] = [
@@ -44,10 +47,11 @@ const projects: Project[] = [
       { icon: TestTube, text: "Suite de testing automatizado (Unitario, Integración, Seguridad)" },
       { icon: GitBranch, text: "Scripts Bash con estrategia Fail-Fast" },
     ],
-    tech: ["Django", "Next.js", "PostgreSQL", "JWT", "OpenAPI"],
+    tech: ["Django", "Next.js", "PostgreSQL", "JWT", "RBAC"],
     icon: Users,
     span: "md:col-span-2",
     accent: "primary",
+    repoUrl: "https://github.com/JeronimoZapata/sixty-proyect",
   },
   {
     title: "Módulo Logística E-Commerce",
@@ -58,27 +62,43 @@ const projects: Project[] = [
       { icon: Boxes, text: "Clean Architecture y principios SOLID" },
       { icon: Shield, text: "DTOs para validación (prevención Mass Assignment)" },
       { icon: Lock, text: "Seguridad con Keycloak (SSO) y NGINX" },
-      { icon: Container, text: "Docker y CI/CD con GitHub Actions" },
+      { icon: Container, text: "Despliegue con Docker" },
     ],
-    tech: ["NestJS", "TypeORM", "Keycloak", "MySQL", "Docker"],
+    tech: ["NestJS", "Next.js", "MySQL", "Keycloak", "NGINX"],
     icon: Server,
     span: "md:col-span-2",
     accent: "accent",
+    repoUrl: "https://github.com/FRRe-DS/2025-03-TPI",
   },
   {
-    title: "Seguridad & CTF",
+    title: "CTF Writeups",
     role: "Security Researcher",
-    description: "Entrenamiento activo en plataformas de ciberseguridad con enfoque en vulnerabilidades web.",
+    description: "Documentación de desafíos CTF resueltos con explicaciones detalladas y scripts de automatización.",
     highlights: [
-      { icon: Shield, text: "SoftwareSeguro (Hacklab), HackTheBox, TryHackMe" },
+      { icon: Shield, text: "Vulnerabilidades web siguiendo guías OWASP" },
       { icon: CheckCircle2, text: "SQLi, XSS, CSRF, IDOR, Broken Authentication" },
       { icon: FileCode, text: "Burp Suite y scripts de automatización en Python" },
       { icon: GitBranch, text: "Análisis de código fuente y parches correctivos" },
     ],
-    tech: ["OWASP", "Burp Suite", "Python", "Web Security"],
+    tech: ["Python", "Burp Suite", "OWASP", "Linux"],
     icon: Shield,
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "primary",
+    repoUrl: "https://github.com/gonzaorban/CTF-Writeups",
+  },
+  {
+    title: "ICPC - TAP",
+    role: "Competitive Programmer",
+    description: "Soluciones y entrenamiento para competencias de programación ICPC y TAP.",
+    highlights: [
+      { icon: FileCode, text: "Algoritmos y estructuras de datos avanzadas" },
+      { icon: CheckCircle2, text: "Problemas de competencias oficiales" },
+    ],
+    tech: ["Python"],
+    icon: Trophy,
+    span: "md:col-span-1",
+    accent: "accent",
+    repoUrl: "https://github.com/gonzaorban/TAP",
   },
 ]
 
@@ -159,6 +179,22 @@ export function ProjectBento() {
                   </span>
                 ))}
               </div>
+
+              {/* Repository Link */}
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-4 inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                  project.accent === 'primary' 
+                    ? 'text-primary hover:text-primary/80' 
+                    : 'text-accent hover:text-accent/80'
+                }`}
+              >
+                <Github className="w-4 h-4" />
+                Ver Repositorio
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </motion.div>
           ))}
         </div>
