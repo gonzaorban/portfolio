@@ -15,7 +15,8 @@ import {
   CheckCircle2,
   Boxes,
   Trophy,
-  Github
+  Github,
+  Linkedin
 } from "lucide-react"
 
 interface ProjectHighlight {
@@ -34,6 +35,7 @@ interface Project {
   span: string
   accent: "primary" | "accent"
   repoUrl: string
+  linkedinUrl?: string
 }
 
 const projects: Project[] = [
@@ -69,6 +71,7 @@ const projects: Project[] = [
     span: "md:col-span-2",
     accent: "accent",
     repoUrl: "https://github.com/FRRe-DS/2025-03-TPI",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_de-la-teor%C3%ADa-a-la-pr%C3%A1ctica-microservicios-activity-7402749299010428928-mS7Y",
   },
   {
     title: "CTF Writeups",
@@ -99,6 +102,7 @@ const projects: Project[] = [
     span: "md:col-span-1",
     accent: "accent",
     repoUrl: "https://github.com/gonzaorban/TAP",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_icpc-argentina-2025-icpc-international-activity-7365448215111884801-3Vx6",
   },
 ]
 
@@ -180,21 +184,33 @@ export function ProjectBento() {
                 ))}
               </div>
 
-              {/* Repository Link */}
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`mt-4 inline-flex items-center gap-2 text-sm font-medium transition-colors ${
-                  project.accent === 'primary' 
-                    ? 'text-primary hover:text-primary/80' 
-                    : 'text-accent hover:text-accent/80'
-                }`}
-              >
-                <Github className="w-4 h-4" />
-                Ver Repositorio
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              {/* Links */}
+              <div className="flex items-center gap-4 mt-4">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                    project.accent === 'primary' 
+                      ? 'text-primary hover:text-primary/80' 
+                      : 'text-accent hover:text-accent/80'
+                  }`}
+                >
+                  <Github className="w-4 h-4" />
+                  Ver Repositorio
+                </a>
+                {project.linkedinUrl && (
+                  <a
+                    href={project.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    LinkedIn
+                  </a>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
