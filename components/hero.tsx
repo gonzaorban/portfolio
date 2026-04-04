@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Terminal } from "./terminal"
-import { Github, Linkedin, Mail, MapPin } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react"
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/gonzaorban", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/gonzaorban", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/gonzaorban", label: "X" },
   { icon: Mail, href: "mailto:gonzaorban@gmail.com", label: "Email" },
 ]
 
