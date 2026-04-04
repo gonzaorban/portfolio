@@ -11,7 +11,7 @@ const platforms = [
     icon: Shield,
     color: "text-purple-400",
     link: "https://app.softwareseguro.com.ar/ranking",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-activity-example",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
     linkedinText: "Ver publicación de competencia",
   },
   {
@@ -21,7 +21,7 @@ const platforms = [
     icon: Terminal,
     color: "text-green-400",
     link: "https://app.hackthebox.com/profile/2634163",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_university-ctf-2025-activity-example",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
     linkedinText: "Ver publicación de competencia",
   },
   {
@@ -41,7 +41,7 @@ const platforms = [
     icon: Flag,
     color: "text-blue-400",
     link: "https://play.picoctf.org/users/gonzaorban",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_picoctf-2026-activity-example",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
     linkedinText: "Ver publicación de competencia",
   },
 ]
