@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, FlaskConical, Award, Linkedin, Microscope, CheckCircle2 } from "lucide-react"
+import { FlaskConical, Award, Linkedin, Microscope, CheckCircle2 } from "lucide-react"
 
 export function ResearchSpotlight() {
   return (
@@ -45,7 +45,7 @@ export function ResearchSpotlight() {
               Desarrollo de un Esquema de Ciberseguridad (Controles, Arquitecturas e Inteligencia de Amenazas) para Entornos Empresariales.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {["Controles de Seguridad", "Arquitecturas", "Threat Intel"].map((tag) => (
+              {["Security Controls", "Architectures", "Threat Intel"].map((tag) => (
                 <span key={tag} className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-muted-foreground">
                   {tag}
                 </span>
@@ -133,21 +133,6 @@ export function ResearchSpotlight() {
             </div>
           </motion.div>
         </div>
-
-        {/* Academic Context */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 p-4 rounded-lg border border-border/30 bg-secondary/20 flex items-center gap-4"
-        >
-          <BookOpen className="w-5 h-5 text-muted-foreground shrink-0" />
-          <p className="text-sm text-muted-foreground">
-            <span className="text-foreground font-medium">Estudiante de 4to Año</span> — Ingeniería en Sistemas de Información en UTN 
-            (Universidad Tecnológica Nacional), Facultad Regional Resistencia, Chaco.
-          </p>
-        </motion.div>
       </div>
     </section>
   )
