@@ -37,8 +37,11 @@ export function ResearchSpotlight() {
               <div>
                 <span className="text-xs font-mono text-primary uppercase tracking-wider">Beca de Investigación</span>
                 <h3 className="text-lg font-semibold mt-1 group-hover:text-primary transition-colors">
-                  Beca CInApTIC
+                  CInApTIC
                 </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Centro de Investigación Aplicada a Tecnologías de la Información y Comunicación
+                </p>
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
