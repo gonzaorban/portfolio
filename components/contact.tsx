@@ -2,20 +2,13 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Send, Github, Linkedin, Mail, Copy, Check, Circle, MessageSquare } from "lucide-react"
+import { Send, Mail, Check, Circle, MessageSquare } from "lucide-react"
 
 const EMAIL = "gonzaorban@gmail.com"
 
 export function Contact() {
-  const [copied, setCopied] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const copyEmail = async () => {
-    await navigator.clipboard.writeText(EMAIL)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -76,44 +69,6 @@ export function Contact() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Disponible para proyectos y consultas técnicas
               </p>
-            </div>
-
-            {/* Quick Links */}
-            <div className="rounded-lg border border-border/50 p-5 glass">
-              <h3 className="text-sm font-medium text-foreground mb-4">Links Rápidos</h3>
-              <div className="space-y-3">
-                <a
-                  href="https://linkedin.com/in/gonzaorban"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-[#0A66C2] transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-secondary/50 flex items-center justify-center group-hover:bg-[#0A66C2]/10 transition-colors">
-                    <Linkedin className="w-4 h-4" />
-                  </div>
-                  <span>LinkedIn</span>
-                </a>
-                <a
-                  href="https://github.com/gonzaorban"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-secondary/50 flex items-center justify-center group-hover:bg-secondary transition-colors">
-                    <Github className="w-4 h-4" />
-                  </div>
-                  <span>GitHub</span>
-                </a>
-                <button
-                  onClick={copyEmail}
-                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group w-full"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-secondary/50 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                    {copied ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
-                  </div>
-                  <span>{copied ? "Copiado" : "Copiar Email"}</span>
-                </button>
-              </div>
             </div>
 
             {/* Direct Email */}
