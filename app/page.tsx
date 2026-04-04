@@ -1,0 +1,19 @@
+import { Hero } from "@/components/hero"
+import { ResearchSpotlight } from "@/components/research-spotlight"
+import { CybersecurityHub } from "@/components/cybersecurity-hub"
+import { ProjectBento } from "@/components/project-bento"
+import { TechStack } from "@/components/tech-stack"
+import { Footer } from "@/components/footer"
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-background">
+      <Hero />
+      <ResearchSpotlight />
+      <CybersecurityHub />
+      <ProjectBento />
+      <TechStack />
+      <Footer />
+    </main>
+  )
+}
