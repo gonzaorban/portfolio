@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 const commands = [
   { prompt: "$ whoami", output: ["gonzaorban"] },
-  { prompt: "$ cat rol.txt", output: ["Desarrollador Backend", "Investigador en Seguridad", "Arquitecto de Software"] },
+  { prompt: "$ cat rol.txt", output: ["Desarrollador Backend", "Investigador en Ciberseguridad", "Arquitecto de Software"] },
   { prompt: "$ pwd", output: ["/home/gonza/resistencia-chaco-argentina"] },
   { prompt: "$ cat estado.txt", output: ["4to Año - Ingeniería en Sistemas de Información @ UTN", "Becario de Investigación CInApTIC"] },
 ]
