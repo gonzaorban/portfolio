@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Grid Lines + Glow Background</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── BACKGROUND SYSTEM ─────────────────────────────────────────── */
+    body {
+      min-height: 100vh;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      color: #e2e8f0;
+      background-color: #06090f;
+
+      /* Layer 1: CSS grid lines (horizontal + vertical) */
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Layer 2: Glow overlays — position: fixed so cubren toda la pantalla */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        /* Glow principal — cian arriba-izquierda */
+        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(34, 211, 238, 0.12) 0%, transparent 70%),
+        /* Glow secundario — verde abajo-derecha */
+        radial-gradient(ellipse 55% 40% at 85% 85%, rgba(74, 222, 128, 0.08) 0%, transparent 65%),
+        /* Vignette perimetral — oscurece los bordes */
+        radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(6,9,15,0.85) 100%);
+      z-index: 0;
+    }
+
+    /* ─── DEMO CONTENT ──────────────────────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* Location badge */
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+    .location svg { width: 14px; height: 14px; }
+
+    /* Heading */
+    h1 {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    h1 .surname { color: #22d3ee; }
+
+    /* Sub */
+    .sub {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-size: 1.05rem;
+      color: #64748b;
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    /* Social pills */
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 56px;
+    }
+    .social-btn {
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #64748b;
+      font-size: 15px;
+      transition: all .2s;
+      cursor: default;
+    }
+    .social-btn:hover { color: #22d3ee; border-color: rgba(34,211,238,0.4); background: rgba(34,211,238,0.05); }
+
+    /* Terminal card */
+    .terminal {
+      background: rgba(6,9,15,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 0;
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      max-width: 580px;
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.red   { background: #ff5f57; }
+    .dot.yellow{ background: #ffbd2e; }
+    .dot.green { background: #28ca41; }
+    .terminal-title { margin-left: 8px; font-size: 12px; color: #475569; }
+    .terminal-body { padding: 18px 20px; font-size: 13px; line-height: 1.9; }
+    .prompt { color: #22d3ee; }
+    .cmd    { color: #e2e8f0; }
+    .out    { color: #4ade80; }
+    .comment{ color: #475569; }
+
+    /* ─── LEGEND ────────────────────────────────────────────────────── */
+    .legend {
+      margin-top: 60px;
+      padding: 20px 24px;
+      border: 1px solid rgba(34,211,238,0.15);
+      border-radius: 10px;
+      background: rgba(34,211,238,0.03);
+      font-size: 13px;
+      line-height: 2;
+    }
+    .legend h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #22d3ee; margin-bottom: 10px; }
+    .legend li { color: #64748b; list-style: none; padding-left: 16px; position: relative; }
+    .legend li::before { content: '→'; position: absolute; left: 0; color: #22d3ee; }
+
+    /* Animated cursor blink */
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .cursor { display: inline-block; width: 8px; height: 14px; background: #22d3ee; vertical-align: middle; animation: blink 1s step-end infinite; margin-left: 2px; }
+
+    /* Subtle grid line pulse on the glow area */
+    @keyframes glowPulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.75; }
+    }
+    body::before { animation: glowPulse 6s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Location -->
+    <div class="location">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Resistencia, Chaco, Argentina
+    </div>
+
+    <!-- Name -->
+    <h1>
+      Gonzalo Tomás<br>
+      <span class="surname">Orban</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="sub">
+      Desarrollando Sistemas Seguros y Escalables.<br>
+      Apasionado por la arquitectura de software y la ciberseguridad.
+    </p>
+
+    <!-- Socials -->
+    <div class="socials">
+      <div class="social-btn" title="GitHub">GH</div>
+      <div class="social-btn" title="LinkedIn">in</div>
+      <div class="social-btn" title="X">𝕏</div>
+      <div class="social-btn" title="Email">@</div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">gonzaorban ~ bash</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="prompt">gonzaorban@portfolio</span><span class="comment">:~$</span> <span class="cmd">whoami</span></div>
+        <div class="out">Estudiante de Ingeniería en Sistemas · UTN</div>
+        <br>
+        <div><span class="prompt">gonzaorban@portfolio</span><span class="comment">:~$</span> <span class="cmd">cat skills.txt</span></div>
+        <div class="out">Backend · NestJS · Django · Ciberseguridad</div>
+        <br>
+        <div><span class="prompt">gonzaorban@portfolio</span><span class="comment">:~$</span> <span class="cmd">status</span></div>
+        <div class="out">✔ Open to work &amp; collaborations</div>
+        <br>
+        <div><span class="prompt">gonzaorban@portfolio</span><span class="comment">:~$</span> <span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <h3>Elementos del fondo — Opción 4</h3>
+      <ul>
+        <li>Cuadrícula CSS de 48×48 px · líneas blancas a 4 % de opacidad</li>
+        <li>Glow cian <code style="color:#22d3ee">#22d3ee</code> en esquina superior-izquierda (radial, 70 % ancho)</li>
+        <li>Glow verde <code style="color:#4ade80">#4ade80</code> en esquina inferior-derecha (radial, 55 % ancho)</li>
+        <li>Vignette perimetral que oscurece bordes y enfoca el contenido central</li>
+        <li>Pulse lento de 6 s en los glows — sutil, no distrae</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
