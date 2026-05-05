@@ -36,7 +36,20 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans antialiased">
-        {children}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0"
+          style={{
+            zIndex: 0,
+            background: [
+              'radial-gradient(ellipse 75% 55% at 10% 5%, rgba(34,211,238,0.25) 0%, transparent 65%)',
+              'radial-gradient(ellipse 65% 50% at 92% 92%, rgba(74,222,128,0.18) 0%, transparent 60%)',
+            ].join(','),
+          }}
+        />
+        <div className="relative" style={{ zIndex: 1 }}>
+          {children}
+        </div>
         <Analytics />
       </body>
     </html>
