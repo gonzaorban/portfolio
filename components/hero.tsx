@@ -41,8 +41,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-balance"
         >
-          <span className="text-foreground">Gonzalo Tomás</span>{" "}
-          <span className="text-primary">Orban</span>
+          <span className="text-foreground whitespace-nowrap">Gonzalo Tomás</span>{" "}
+          <span className="text-primary whitespace-nowrap">Orban</span>
         </motion.h1>
 
         <motion.p 

@@ -34,7 +34,7 @@ interface Project {
   icon: typeof Shield
   span: string
   accent: "primary" | "accent"
-  repoUrl: string
+  repoUrl?: string
   linkedinUrl?: string
 }
 
@@ -53,7 +53,7 @@ const projects: Project[] = [
     icon: Users,
     span: "md:col-span-2",
     accent: "primary",
-    repoUrl: "https://github.com/JeronimoZapata/sixty-proyect",
+    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_orgulloso-de-lo-que-logramos-por-mas-proyectos-ugcPost-7458195361224880128-NUhm/",
   },
   {
     title: "Módulo Logística E-Commerce",
@@ -72,22 +72,6 @@ const projects: Project[] = [
     accent: "accent",
     repoUrl: "https://github.com/FRRe-DS/2025-03-TPI",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_de-la-teor%C3%ADa-a-la-pr%C3%A1ctica-microservicios-activity-7402749299010428928-mS7Y",
-  },
-  {
-    title: "CTF Writeups",
-    role: "Security Researcher",
-    description: "Documentación de desafíos CTF resueltos con explicaciones detalladas y scripts de automatización.",
-    highlights: [
-      { icon: Shield, text: "Vulnerabilidades web siguiendo guías OWASP" },
-      { icon: CheckCircle2, text: "SQLi, XSS, CSRF, IDOR, Broken Authentication" },
-      { icon: FileCode, text: "Burp Suite y scripts de automatización en Python" },
-      { icon: GitBranch, text: "Análisis de código fuente y parches correctivos" },
-    ],
-    tech: ["Python", "Burp Suite", "OWASP", "Linux"],
-    icon: Shield,
-    span: "md:col-span-1",
-    accent: "primary",
-    repoUrl: "https://github.com/gonzaorban/CTF-Writeups",
   },
   {
     title: "ICPC - TAP",
@@ -129,7 +113,7 @@ export function ProjectBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`rounded-lg border border-border/50 p-6 glass glass-hover transition-all duration-300 group ${project.span}`}
+              className={`flex flex-col rounded-lg border border-border/50 p-6 glass glass-hover transition-all duration-300 group ${project.span}`}
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -173,12 +157,9 @@ export function ProjectBento() {
               </div>
               
               {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-border/30">
+              <div className="flex flex-wrap gap-2 pt-4 mt-auto border-t border-border/30">
                 {project.tech.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="text-xs px-2.5 py-1 rounded-md bg-secondary/50 text-muted-foreground font-mono hover:text-foreground hover:bg-secondary/80 transition-colors"
-                  >
+                  <span key={tech} className="tech-badge">
                     {tech}
                   </span>
                 ))}
@@ -186,19 +167,21 @@ export function ProjectBento() {
 
               {/* Links */}
               <div className="flex items-center gap-4 mt-4">
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
-                    project.accent === 'primary' 
-                      ? 'text-primary hover:text-primary/80' 
-                      : 'text-accent hover:text-accent/80'
-                  }`}
-                >
-                  <Github className="w-4 h-4" />
-                  Ver Repositorio
-                </a>
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                      project.accent === 'primary'
+                        ? 'text-primary hover:text-primary/80'
+                        : 'text-accent hover:text-accent/80'
+                    }`}
+                  >
+                    <Github className="w-4 h-4" />
+                    Ver Repositorio
+                  </a>
+                )}
                 {project.linkedinUrl && (
                   <a
                     href={project.linkedinUrl}

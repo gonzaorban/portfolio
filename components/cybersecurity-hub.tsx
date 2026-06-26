@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin } from "lucide-react"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin, FileCode, CheckCircle2, GitBranch, Github } from "lucide-react"
 
 const platforms = [
   {
@@ -85,7 +85,7 @@ export function CybersecurityHub() {
           className="flex items-center gap-3 mb-8"
         >
           <Shield className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl md:text-3xl font-bold">Hub de Ciberseguridad</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Ciberseguridad</h2>
         </motion.div>
 
         {/* Platforms Grid */}
@@ -154,7 +154,7 @@ export function CybersecurityHub() {
           transition={{ duration: 0.5 }}
           className="text-lg font-semibold mb-4 text-muted-foreground"
         >
-          Habilidades en Seguridad
+          Skills
         </motion.h3>
         
         <div className="grid gap-4 sm:grid-cols-2">
@@ -174,7 +174,7 @@ export function CybersecurityHub() {
               <p className="text-xs text-muted-foreground pl-7 mb-3">{skill.description}</p>
               <div className="flex flex-wrap gap-1.5 pl-7">
                 {skill.tags.map((tag) => (
-                  <span key={tag} className="text-[10px] px-2 py-0.5 rounded bg-primary/10 text-primary/80 font-mono">
+                  <span key={tag} className="tech-badge">
                     {tag}
                   </span>
                 ))}
