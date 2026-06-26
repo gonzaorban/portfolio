@@ -1,0 +1,22 @@
+# Imagen de desarrollo con hot-reload.
+# Usada por docker-compose.yml (servicio `web`).
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Instala dependencias primero para aprovechar la cache de capas.
+# Se copian solo los manifiestos; el resto del código se monta por volumen.
+COPY package.json package-lock.json* ./
+RUN npm install
+
+# El código real se monta como volumen en docker-compose, esto es solo
+# un fallback para `docker build` sin compose.
+COPY . .
+
+EXPOSE 3000
+
+# Se invoca `next dev` directamente (sin Turbopack) porque el watcher de
+# Turbopack no detecta cambios a través de un volumen montado en Windows.
+# Webpack sí respeta WATCHPACK_POLLING (definido en docker-compose.yml),
+# lo que da hot-reload fiable dentro del contenedor.
+CMD ["npx", "next", "dev", "--webpack"]
