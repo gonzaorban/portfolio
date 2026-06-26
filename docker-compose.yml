@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Monta el código fuente para reflejar cambios al instante.
+      - .:/app
+      # Volumen anónimo: evita que el node_modules del host (Windows)
+      # pise el instalado dentro del contenedor (Linux).
+      - /app/node_modules
+      # Mantiene la cache de build de Next entre reinicios.
+      - /app/.next
+    environment:
+      # Hot-reload fiable en Windows/Docker: el watcher vigila por polling
+      # en lugar de eventos del sistema de archivos (que no se propagan
+      # bien a través del volumen montado). Next 16 usa Turbopack, pero se
+      # dejan las tres variables para cubrir Turbopack, webpack y chokidar.
+      - TURBOPACK_POLLING=true
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
