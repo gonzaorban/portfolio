@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Layers, Server, Shield, Wrench, BookOpen, Languages, Code2, Database } from "lucide-react"
+import { Layers, Shield, Wrench, BookOpen, Languages, Code2, Database } from "lucide-react"
 
 const categories = [
   {
@@ -9,54 +9,28 @@ const categories = [
     icon: Code2,
     color: "text-primary",
     bgColor: "bg-primary/10",
-    items: [
-      { name: "Python", highlight: true },
-      { name: "Django", highlight: true },
-      { name: "Django ORM", highlight: false },
-      { name: "TypeScript", highlight: true },
-      { name: "NestJS", highlight: true },
-      { name: "TypeORM", highlight: false },
-      { name: "React", highlight: false },
-      { name: "Next.js", highlight: false },
-    ],
+    items: ["Python", "Django", "Django ORM", "TypeScript", "NestJS", "TypeORM", "React", "Next.js"],
   },
   {
     title: "Bases de Datos",
     icon: Database,
-    color: "text-accent",
-    bgColor: "bg-accent/10",
-    items: [
-      { name: "MySQL", highlight: true },
-      { name: "PostgreSQL", highlight: true },
-      { name: "Redis", highlight: false },
-    ],
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    items: ["MySQL", "PostgreSQL"],
   },
   {
     title: "Seguridad",
     icon: Shield,
-    color: "text-red-400",
-    bgColor: "bg-red-400/10",
-    items: [
-      { name: "Keycloak", highlight: true },
-      { name: "OWASP", highlight: true },
-      { name: "Burp Suite", highlight: true },
-      { name: "JWT/OAuth", highlight: false },
-      { name: "RBAC", highlight: false },
-    ],
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    items: ["Keycloak", "OWASP", "Burp Suite", "JWT/OAuth", "RBAC"],
   },
   {
     title: "Herramientas & DevOps",
     icon: Wrench,
-    color: "text-yellow-400",
-    bgColor: "bg-yellow-400/10",
-    items: [
-      { name: "Bash", highlight: true },
-      { name: "Docker", highlight: true },
-      { name: "GitHub Actions", highlight: true },
-      { name: "Git", highlight: false },
-      { name: "Linux", highlight: false },
-      { name: "NGINX", highlight: false },
-    ],
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    items: ["Bash", "Docker", "GitHub Actions", "Git", "Linux", "NGINX"],
   },
 ]
 
@@ -93,15 +67,8 @@ export function TechStack() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.items.map((item) => (
-                  <span 
-                    key={item.name} 
-                    className={`text-xs px-2.5 py-1.5 rounded-md transition-colors cursor-default font-mono ${
-                      item.highlight 
-                        ? 'bg-primary/20 text-primary hover:bg-primary/30' 
-                        : 'bg-secondary/50 text-muted-foreground hover:text-foreground hover:bg-secondary'
-                    }`}
-                  >
-                    {item.name}
+                  <span key={item} className="tech-badge">
+                    {item}
                   </span>
                 ))}
               </div>

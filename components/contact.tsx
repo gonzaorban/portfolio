@@ -29,7 +29,7 @@ export function Contact() {
     }
     
     try {
-      const response = await fetch("https://formspree.io/f/xwpkgjkr", {
+      const response = await fetch("https://formspree.io/f/xnjkpkpy", {
         method: "POST",
         body: formData,
         headers: {

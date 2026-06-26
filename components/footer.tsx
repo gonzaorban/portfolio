@@ -3,11 +3,28 @@
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Circle } from "lucide-react"
 
+// Custom X (Twitter) icon
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
+
 const links = [
   { icon: Github, href: "https://github.com/gonzaorban", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/gonzaorban", label: "LinkedIn" },
+  { icon: XIcon, href: "https://x.com/gonzaorban", label: "X" },
   { icon: Mail, href: "mailto:gonzaorban@gmail.com", label: "Email" },
 ]
+
+const lastUpdatedRaw = process.env.NEXT_PUBLIC_LAST_UPDATED
+const lastUpdated = lastUpdatedRaw
+  ? new Date(lastUpdatedRaw).toLocaleDateString("es-AR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+  : null
 
 export function Footer() {
   return (
@@ -73,6 +90,11 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Gonza Orban. Desarrollado con Next.js & Tailwind CSS.
           </p>
+          {lastUpdated && (
+            <p className="text-xs text-muted-foreground/70 mt-1">
+              Última actualización: {lastUpdated}
+            </p>
+          )}
         </motion.div>
       </div>
     </footer>

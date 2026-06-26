@@ -49,7 +49,7 @@ export function ResearchSpotlight() {
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {["Security Controls", "Architectures", "Threat Intel"].map((tag) => (
-                <span key={tag} className="text-xs px-2 py-1 rounded-md bg-secondary/50 text-muted-foreground">
+                <span key={tag} className="tech-badge">
                   {tag}
                 </span>
               ))}
@@ -111,7 +111,7 @@ export function ResearchSpotlight() {
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-3">
               {["LLMs", "Random Forest", "SVM", "SOC"].map((tag) => (
-                <span key={tag} className="text-xs px-2 py-0.5 rounded-md bg-accent/10 text-accent font-mono">
+                <span key={tag} className="tech-badge">
                   {tag}
                 </span>
               ))}
