@@ -35,7 +35,13 @@ export const metadata: Metadata = {
     description: 'Portfolio de Gonzalo Orban - Estudiante de Ingeniería en Sistemas, Desarrollador Backend y Especialista en Ciberseguridad.',
     locale: 'es_AR',
     type: 'website',
-    images: [{ url: '/icon-512.png', width: 512, height: 512, alt: 'Gonzalo Orban' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Gonzalo Orban - Backend & Ciberseguridad' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gonzalo Orban | Portfolio',
+    description: 'Portfolio de Gonzalo Orban - Desarrollador Backend y Especialista en Ciberseguridad.',
+    images: ['/og-image.png'],
   },
 }
 
