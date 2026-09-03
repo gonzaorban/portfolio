@@ -21,6 +21,9 @@
   /* Electric Blue Accent */
   --accent: oklch(0.65 0.2 250);
   --accent-foreground: oklch(0.08 0 0);
+  /* Amber Highlight - competencias / logros */
+  --highlight: oklch(0.82 0.16 85);
+  --highlight-foreground: oklch(0.08 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.95 0 0);
   --border: oklch(0.2 0 0);
@@ -59,6 +62,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -216,6 +221,17 @@
 .link-linkedin:focus-visible {
   color: #7cc0f7;
   text-shadow: 0 0 12px var(--linkedin-glow);
+}
+
+/* Repositorio: azul unico para todas las tarjetas, sin importar el acento */
+.link-repo {
+  color: var(--accent);
+}
+
+.link-repo:hover,
+.link-repo:focus-visible {
+  color: color-mix(in oklch, var(--accent) 80%, white);
+  text-shadow: 0 0 12px color-mix(in oklch, var(--accent) 45%, transparent);
 }
 
 /* Links de perfil / externos neutros */
