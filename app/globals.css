@@ -234,6 +234,17 @@
   text-shadow: 0 0 12px color-mix(in oklch, var(--accent) 45%, transparent);
 }
 
+/* Deploy en vivo: verde primario, para diferenciarlo del azul del repo */
+.link-live {
+  color: var(--primary);
+}
+
+.link-live:hover,
+.link-live:focus-visible {
+  color: color-mix(in oklch, var(--primary) 80%, white);
+  text-shadow: 0 0 12px color-mix(in oklch, var(--primary) 45%, transparent);
+}
+
 /* Links de perfil / externos neutros */
 .link-muted {
   color: var(--muted-foreground);

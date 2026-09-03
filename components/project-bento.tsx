@@ -15,7 +15,8 @@ import {
   Boxes,
   Trophy,
   Github,
-  Linkedin
+  Linkedin,
+  Globe
 } from "lucide-react"
 
 interface ProjectHighlight {
@@ -33,6 +34,7 @@ interface Project {
   icon: typeof Shield
   span: string
   accent: "primary" | "accent" | "highlight"
+  liveUrl?: string
   repoUrl?: string
   linkedinUrl?: string
   linkedinLinks?: { url: string; label: string }[]
@@ -54,6 +56,7 @@ const projects: Project[] = [
     icon: Users,
     span: "md:col-span-2",
     accent: "primary",
+    liveUrl: "https://www.sixtyclub.win/",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_orgulloso-de-lo-que-logramos-por-mas-proyectos-ugcPost-7458195361224880128-NUhm/",
   },
   {
@@ -204,6 +207,17 @@ export function ProjectBento() {
 
               {/* Links */}
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-anim link-live text-sm font-medium"
+                  >
+                    <Globe className="w-4 h-4" />
+                    Ver Deploy
+                  </a>
+                )}
                 {project.repoUrl && (
                   <a
                     href={project.repoUrl}
