@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="2" y="4" width="20" height="16" rx="2" fill="#050505"/>
-  <polyline points="6 9 10 12 6 15"/>
-  <line x1="12" y1="15" x2="18" y2="15"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Gonzalo Orban">
+  <rect width="64" height="64" rx="15" fill="#0a0c0f"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="12" fill="none" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Segoe UI, Inter, system-ui, sans-serif" font-weight="900" font-size="40" fill="#10b981">G</text>
 </svg>

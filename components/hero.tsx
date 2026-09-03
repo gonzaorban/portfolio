@@ -66,7 +66,7 @@ export function Hero() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 glass glass-hover"
+              className="social-link w-11 h-11 flex items-center justify-center rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/50 glass glass-hover"
               aria-label={link.label}
             >
               <link.icon className="w-5 h-5" />

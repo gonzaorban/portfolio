@@ -12,7 +12,7 @@ const platforms = [
     color: "text-purple-400",
     link: "https://app.softwareseguro.com.ar/ranking",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
-    linkedinText: "Ver publicación de competencia",
+    linkedinText: "HackLab 2025",
   },
   {
     name: "HackTheBox",
@@ -20,9 +20,9 @@ const platforms = [
     description: "Ver mi perfil",
     icon: Terminal,
     color: "text-green-400",
-    link: "https://app.hackthebox.com/profile/2634163",
+    link: "https://app.hackthebox.com/users/2634163?profile-top-tab=machines&ownership-period=1M&profile-bottom-tab=prolabs",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
-    linkedinText: "Ver publicación de competencia",
+    linkedinText: "University CTF 2025",
   },
   {
     name: "TryHackMe",
@@ -35,14 +35,14 @@ const platforms = [
     linkedinText: null,
   },
   {
-    name: "picoCTF",
-    subtitle: null,
+    name: "CyLab Security Academy",
+    subtitle: "Carnegie Mellon",
     description: "Ver mi perfil",
     icon: Flag,
     color: "text-blue-400",
     link: "https://play.picoctf.org/users/gonzaorban",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
-    linkedinText: "Ver publicación de competencia",
+    linkedinText: "picoCTF 2026",
   },
 ]
 
@@ -99,7 +99,7 @@ export function CybersecurityHub() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-xl border border-border/40 p-5 bg-secondary/10 hover:bg-secondary/20 hover:border-border/60 hover:shadow-lg hover:shadow-black/20 transition-all duration-300 group"
+                className="card-anim group rounded-xl border border-border/40 p-5 bg-secondary/15"
               >
                 {/* Icon and Title Row */}
                 <div className="flex items-center gap-3 mb-3">
@@ -107,7 +107,7 @@ export function CybersecurityHub() {
                     <IconComponent className={`w-5 h-5 ${platform.color}`} />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors truncate">
+                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
                       {platform.name}
                     </h3>
                     {platform.subtitle && (
@@ -123,7 +123,7 @@ export function CybersecurityHub() {
                   href={platform.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+                  className="link-anim link-muted text-xs mb-2"
                 >
                   <span>{platform.description}</span>
                   <ExternalLink className="w-3 h-3" />
@@ -135,7 +135,7 @@ export function CybersecurityHub() {
                     href={platform.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-[11px] text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                    className="link-anim link-linkedin text-[11px]"
                   >
                     <Linkedin className="w-3 h-3" />
                     <span>{platform.linkedinText}</span>
@@ -165,14 +165,24 @@ export function CybersecurityHub() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="rounded-lg border border-border/30 p-4 bg-secondary/20 hover:bg-secondary/30 transition-colors group"
+              className="card-anim group flex flex-col rounded-xl border border-border/40 p-5 bg-secondary/15"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <skill.icon className="w-4 h-4 text-primary group-hover:text-accent transition-colors" />
-                <h4 className="font-medium text-sm">{skill.name}</h4>
+              {/* Encabezado: icono en recuadro + titulo */}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/20 group-hover:border-primary/40">
+                  <skill.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+                  {skill.name}
+                </h4>
               </div>
-              <p className="text-xs text-muted-foreground pl-7 mb-3">{skill.description}</p>
-              <div className="flex flex-wrap gap-1.5 pl-7">
+
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                {skill.description}
+              </p>
+
+              {/* Herramientas */}
+              <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/30">
                 {skill.tags.map((tag) => (
                   <span key={tag} className="tech-badge">
                     {tag}
