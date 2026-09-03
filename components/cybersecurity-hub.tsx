@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin, FileCode, CheckCircle2, GitBranch, Github } from "lucide-react"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin, FileCode, CheckCircle2, GitBranch, Github, FileSearch } from "lucide-react"
 
 const platforms = [
   {
@@ -47,29 +47,35 @@ const platforms = [
 ]
 
 const skills = [
-  { 
-    icon: Globe, 
-    name: "Web Security", 
-    description: "SQLi, XSS, CSRF, IDOR, Broken Authentication",
-    tags: ["OWASP Top 10", "Burp Suite"]
+  {
+    icon: Globe,
+    name: "Web Security",
+    description: "Race conditions, mass assignment, JWT forgery, CSP bypass, IDOR, SQLi, XSS",
+    tags: ["Burp Suite", "Turbo Intruder", "OWASP Top 10"]
   },
-  { 
-    icon: Binary, 
-    name: "Binary Exploitation", 
-    description: "Buffer overflows, ROP chains, format strings",
-    tags: ["GDB", "Ghidra"]
+  {
+    icon: Binary,
+    name: "Binary Exploitation",
+    description: "Buffer overflows, análisis de binarios, debugging dinámico",
+    tags: ["GDB", "Ghidra", "pwntools"]
   },
-  { 
-    icon: Key, 
-    name: "Criptografía", 
-    description: "Análisis de cifrado, cracking de hashes, debilidades de protocolos",
-    tags: ["Hashcat", "OpenSSL"]
+  {
+    icon: Key,
+    name: "Cryptography",
+    description: "Ataques RSA (factor común), cifrados custom por análisis estadístico, cracking de hashes salteados",
+    tags: ["Hashcat", "OpenSSL", "Python"]
   },
-  { 
-    icon: Bug, 
-    name: "Reverse Engineering", 
-    description: "Análisis de malware, binary patching, deobfuscación",
-    tags: ["IDA", "Radare2"]
+  {
+    icon: Bug,
+    name: "Reverse Engineering",
+    description: "Reversing de APK, análisis estático, deobfuscación",
+    tags: ["jadx", "apktool", "Ghidra"]
+  },
+  {
+    icon: FileSearch,
+    name: "Forensics",
+    description: "Recuperación de imágenes por lógica de paridad, inyección y análisis de metadata",
+    tags: ["ExifTool", "binwalk"]
   },
 ]
 
