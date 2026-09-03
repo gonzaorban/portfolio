@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin, FileCode, CheckCircle2, GitBranch, Github } from "lucide-react"
+import { Shield, Bug, Binary, Globe, Key, ExternalLink, Terminal, Target, Flag, Linkedin, FileCode, CheckCircle2, GitBranch, Github, FileSearch } from "lucide-react"
 
 const platforms = [
   {
@@ -36,7 +36,7 @@ const platforms = [
   },
   {
     name: "CyLab Security Academy",
-    subtitle: "Carnegie Mellon",
+    subtitle: null,
     description: "Ver mi perfil",
     icon: Flag,
     color: "text-blue-400",
@@ -47,29 +47,35 @@ const platforms = [
 ]
 
 const skills = [
-  { 
-    icon: Globe, 
-    name: "Web Security", 
-    description: "SQLi, XSS, CSRF, IDOR, Broken Authentication",
-    tags: ["OWASP Top 10", "Burp Suite"]
+  {
+    icon: Globe,
+    name: "Web Security",
+    description: "Race conditions, mass assignment, JWT forgery, CSP bypass, IDOR, SQLi, XSS",
+    tags: ["Burp Suite", "Turbo Intruder", "OWASP Top 10"]
   },
-  { 
-    icon: Binary, 
-    name: "Binary Exploitation", 
-    description: "Buffer overflows, ROP chains, format strings",
-    tags: ["GDB", "Ghidra"]
+  {
+    icon: Binary,
+    name: "Binary Exploitation",
+    description: "Buffer overflows, análisis de binarios, debugging dinámico",
+    tags: ["GDB", "Ghidra", "pwntools"]
   },
-  { 
-    icon: Key, 
-    name: "Criptografía", 
-    description: "Análisis de cifrado, cracking de hashes, debilidades de protocolos",
-    tags: ["Hashcat", "OpenSSL"]
+  {
+    icon: Key,
+    name: "Cryptography",
+    description: "Ataques RSA (factor común), cifrados custom por análisis estadístico, cracking de hashes salteados",
+    tags: ["Hashcat", "OpenSSL", "Python"]
   },
-  { 
-    icon: Bug, 
-    name: "Reverse Engineering", 
-    description: "Análisis de malware, binary patching, deobfuscación",
-    tags: ["IDA", "Radare2"]
+  {
+    icon: Bug,
+    name: "Reverse Engineering",
+    description: "Reversing de APK, análisis estático, deobfuscación",
+    tags: ["jadx", "apktool", "Ghidra"]
+  },
+  {
+    icon: FileSearch,
+    name: "Forensics",
+    description: "Recuperación de imágenes por lógica de paridad, inyección y análisis de metadata",
+    tags: ["ExifTool", "binwalk"]
   },
 ]
 
@@ -152,6 +158,34 @@ export function CybersecurityHub() {
             )
           })}
         </div>
+
+        {/* Writeups Repo */}
+        <motion.a
+          href="https://github.com/gonzaorban/CTF-Writeups"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="card-anim group mb-10 flex items-center gap-4 rounded-xl border border-border/40 p-5 bg-secondary/15"
+        >
+          <div className="w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center shrink-0">
+            <Github className="w-5 h-5 text-foreground" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
+              Writeups de CTFs
+            </h3>
+            <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+              Resoluciones documentadas de maquinas y desafios que fui completando
+            </p>
+          </div>
+          <span className="link-anim link-muted text-xs shrink-0 transition-colors group-hover:text-foreground group-hover:after:scale-x-100 group-hover:[&>svg]:translate-x-px group-hover:[&>svg]:scale-110">
+            <span className="hidden sm:inline">Ver repositorio</span>
+            <ExternalLink className="w-3 h-3 shrink-0" />
+          </span>
+        </motion.a>
 
         {/* Skills Grid */}
         <motion.h3

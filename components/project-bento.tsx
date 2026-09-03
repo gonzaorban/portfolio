@@ -43,7 +43,7 @@ const projects: Project[] = [
   {
     title: "Sixty Club",
     role: "Full Stack Developer",
-    description: "Desarrollo de plataforma integral para gestión de clubes con Django y Next.js.",
+    description: "Desarrollo de plataforma integral para gestión de clubes.",
     highlights: [
       { icon: FileCode, text: "Documentación de API con OpenAPI/Swagger" },
       { icon: Lock, text: "Autenticación JWT con rotación de tokens y RBAC" },
