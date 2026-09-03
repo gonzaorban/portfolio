@@ -99,48 +99,55 @@ export function CybersecurityHub() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-anim group rounded-xl border border-border/40 p-5 bg-secondary/15"
+                className="card-anim group flex h-full flex-col rounded-xl border border-border/40 p-5 bg-secondary/15"
               >
                 {/* Icon and Title Row */}
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-start gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center shrink-0`}>
                     <IconComponent className={`w-5 h-5 ${platform.color}`} />
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug text-balance">
                       {platform.name}
                     </h3>
                     {platform.subtitle && (
-                      <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                      <span className="mt-1 block text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
                         {platform.subtitle}
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Profile Link */}
-                <a
-                  href={platform.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-anim link-muted text-xs mb-2"
-                >
-                  <span>{platform.description}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-
-                {/* LinkedIn Link */}
-                {platform.linkedinUrl && (
+                {/* Links: cada uno en su propia linea, anclados al pie */}
+                <div className="mt-auto flex flex-col items-start gap-2 pt-1">
                   <a
-                    href={platform.linkedinUrl}
+                    href={platform.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-anim link-linkedin text-[11px]"
+                    className="link-anim link-muted text-xs"
                   >
-                    <Linkedin className="w-3 h-3" />
-                    <span>{platform.linkedinText}</span>
+                    <span>{platform.description}</span>
+                    <ExternalLink className="w-3 h-3 shrink-0" />
                   </a>
-                )}
+
+                  {platform.linkedinUrl ? (
+                    <a
+                      href={platform.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-anim link-linkedin text-[11px]"
+                    >
+                      <Linkedin className="w-3 h-3 shrink-0" />
+                      <span>{platform.linkedinText}</span>
+                    </a>
+                  ) : (
+                    /* Reserva el alto del segundo link para que las tarjetas
+                       sin publicacion no queden desalineadas */
+                    <span aria-hidden="true" className="text-[11px] leading-4 invisible">
+                      &nbsp;
+                    </span>
+                  )}
+                </div>
               </motion.div>
             )
           })}
