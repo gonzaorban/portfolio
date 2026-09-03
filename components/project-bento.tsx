@@ -36,6 +36,7 @@ interface Project {
   accent: "primary" | "accent"
   repoUrl?: string
   linkedinUrl?: string
+  linkedinLinks?: { url: string; label: string }[]
 }
 
 const projects: Project[] = [
@@ -86,7 +87,16 @@ const projects: Project[] = [
     span: "md:col-span-1",
     accent: "accent",
     repoUrl: "https://github.com/gonzaorban/TAP",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_icpc-argentina-2025-icpc-international-activity-7365448215111884801-3Vx6",
+    linkedinLinks: [
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_icpc-argentina-2025-icpc-international-activity-7365448215111884801-3Vx6",
+        label: "Edición 2025",
+      },
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_icpc-tap-2026-por-segundo-a%C3%B1o-consecutivo-activity-7500567116048252929-UU3n",
+        label: "Edición 2026",
+      },
+    ],
   },
 ]
 
@@ -113,7 +123,7 @@ export function ProjectBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`flex flex-col rounded-lg border border-border/50 p-6 glass glass-hover transition-all duration-300 group ${project.span}`}
+              className={`card-anim group flex flex-col rounded-xl border border-border/40 p-6 bg-secondary/15 ${project.span}`}
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -166,13 +176,13 @@ export function ProjectBento() {
               </div>
 
               {/* Links */}
-              <div className="flex items-center gap-4 mt-4">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4">
                 {project.repoUrl && (
                   <a
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                    className={`link-anim text-sm font-medium ${
                       project.accent === 'primary'
                         ? 'text-primary hover:text-primary/80'
                         : 'text-accent hover:text-accent/80'
@@ -187,12 +197,24 @@ export function ProjectBento() {
                     href={project.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                    className="link-anim link-linkedin text-sm font-medium"
                   >
                     <Linkedin className="w-4 h-4" />
                     LinkedIn
                   </a>
                 )}
+                {project.linkedinLinks?.map((item) => (
+                  <a
+                    key={item.url}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-anim link-linkedin text-sm font-medium"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    {item.label}
+                  </a>
+                ))}
               </div>
             </motion.div>
           ))}

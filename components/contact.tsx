@@ -80,7 +80,7 @@ export function Contact() {
             className="space-y-6 lg:col-span-1"
           >
             {/* Status Card */}
-            <div className="rounded-lg border border-border/50 p-5 glass">
+            <div className="card-anim rounded-xl border border-border/40 p-5 bg-secondary/15">
               <div className="flex items-center gap-3 mb-3">
                 <Circle className="w-3 h-3 fill-primary text-primary animate-pulse" />
                 <span className="text-sm font-medium text-foreground">Estado</span>
@@ -93,7 +93,7 @@ export function Contact() {
             {/* Direct Email */}
             <a
               href={`mailto:${EMAIL}`}
-              className="flex items-center gap-3 rounded-lg border border-border/50 p-5 glass glass-hover transition-all group"
+              className="card-anim group flex items-center gap-3 rounded-xl border border-border/40 p-5 bg-secondary/15"
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Mail className="w-5 h-5 text-primary" />
@@ -113,7 +113,7 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <div className="rounded-lg border border-border/50 p-6 md:p-8 glass">
+            <div className="card-anim card-static rounded-xl border border-border/40 p-6 md:p-8 bg-secondary/15">
               <h3 className="text-lg font-semibold mb-2">Iniciemos una conversación</h3>
               <p className="text-sm text-muted-foreground mb-6">
                 Completá el formulario y te respondo a la brevedad.

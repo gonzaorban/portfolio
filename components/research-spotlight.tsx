@@ -28,7 +28,7 @@ export function ResearchSpotlight() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-lg border border-border/50 p-6 glass glass-hover transition-all duration-300 group"
+            className="card-anim group rounded-xl border border-border/40 p-6 bg-secondary/15"
           >
             <div className="flex items-start gap-4 mb-4">
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -54,6 +54,19 @@ export function ResearchSpotlight() {
                 </span>
               ))}
             </div>
+
+            {/* Simposio - LinkedIn */}
+            <div className="mt-4 pt-4 border-t border-border/30">
+              <a
+                href="https://www.linkedin.com/posts/gonzaorban_este-s%C3%A1bado-tuvimos-el-orgullo-de-exponer-activity-7469116587887845376-t5LU"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-anim link-linkedin text-xs font-medium"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                Exposición en el Simposio
+              </a>
+            </div>
           </motion.div>
 
           {/* Published Paper Card */}
@@ -62,7 +75,7 @@ export function ResearchSpotlight() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-lg border border-border/50 p-6 glass glass-hover transition-all duration-300 group"
+            className="card-anim group rounded-xl border border-border/40 p-6 bg-secondary/15"
           >
             <div className="flex items-start gap-4 mb-3">
               <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
@@ -128,7 +141,7 @@ export function ResearchSpotlight() {
                 href="https://www.linkedin.com/posts/gonzaorban_presentamos-nuestro-paper-en-el-13-conaiisi-activity-7393672118036496384-Xelh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0A66C2] hover:text-[#0A66C2]/80 transition-colors"
+                className="link-anim link-linkedin text-xs font-medium"
               >
                 <Linkedin className="w-3.5 h-3.5" />
                 LinkedIn
