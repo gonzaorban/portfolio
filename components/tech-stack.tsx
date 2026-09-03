@@ -1,36 +1,43 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Layers, Shield, Wrench, BookOpen, Languages, Code2, Database } from "lucide-react"
+import { Layers, Shield, Wrench, BookOpen, Languages, Code2, Database, Server, Monitor, FlaskConical } from "lucide-react"
 
 const categories = [
   {
-    title: "Lenguajes & Frameworks",
+    title: "Lenguajes",
     icon: Code2,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    items: ["Python", "Django", "Django ORM", "TypeScript", "NestJS", "TypeORM", "React", "Next.js"],
+    items: ["Python", "TypeScript", "SQL"],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    items: ["NestJS", "Django", "FastAPI", "TypeORM", "Django ORM"],
+  },
+  {
+    title: "Frontend",
+    icon: Monitor,
+    items: ["Next.js", "React", "Tailwind CSS"],
   },
   {
     title: "Bases de Datos",
     icon: Database,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    items: ["MySQL", "PostgreSQL"],
+    items: ["PostgreSQL", "MySQL"],
+  },
+  {
+    title: "Testing",
+    icon: FlaskConical,
+    items: ["Jest", "Supertest", "Cypress"],
+  },
+  {
+    title: "DevOps & Deploy",
+    icon: Wrench,
+    items: ["Docker", "GitHub Actions", "GHCR", "Vercel", "Cloudflare", "Linux"],
   },
   {
     title: "Seguridad",
     icon: Shield,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    items: ["Keycloak", "OWASP", "Burp Suite", "JWT/OAuth", "RBAC"],
-  },
-  {
-    title: "Herramientas & DevOps",
-    icon: Wrench,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    items: ["Bash", "Docker", "GitHub Actions", "Git", "Linux", "NGINX"],
+    items: ["JWT/OAuth2", "RBAC"],
   },
 ]
 
@@ -77,8 +84,8 @@ export function TechStack() {
               className="card-anim group rounded-xl border border-border/40 p-6 bg-secondary/15"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-10 h-10 rounded-lg ${category.bgColor} border border-primary/20 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/20 group-hover:border-primary/40`}>
-                  <category.icon className={`w-5 h-5 ${category.color}`} />
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/20 group-hover:border-primary/40">
+                  <category.icon className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="font-semibold group-hover:text-primary transition-colors">{category.title}</h3>
               </div>
