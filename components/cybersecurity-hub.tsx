@@ -20,7 +20,7 @@ const platforms = [
     description: "Ver mi perfil",
     icon: Terminal,
     color: "text-green-400",
-    link: "https://app.hackthebox.com/profile/2634163",
+    link: "https://app.hackthebox.com/users/2634163?profile-top-tab=machines&ownership-period=1M&profile-bottom-tab=prolabs",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
     linkedinText: "University CTF 2025",
   },
