@@ -42,6 +42,7 @@ const projects: Project[] = [
   {
     title: "Sixty Club",
     role: "Full Stack Developer",
+    context: "2026",
     description: "Desarrollo de plataforma integral para gestión de clubes.",
     highlights: [
       { icon: FileCode, text: "Documentación de API con OpenAPI/Swagger" },
