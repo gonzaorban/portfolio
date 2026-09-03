@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { 
   Folder, 
-  ExternalLink, 
   Shield, 
   Server, 
   Users, 
@@ -16,7 +15,8 @@ import {
   Boxes,
   Trophy,
   Github,
-  Linkedin
+  Linkedin,
+  Globe
 } from "lucide-react"
 
 interface ProjectHighlight {
@@ -33,7 +33,8 @@ interface Project {
   tech: string[]
   icon: typeof Shield
   span: string
-  accent: "primary" | "accent"
+  accent: "primary" | "accent" | "highlight"
+  liveUrl?: string
   repoUrl?: string
   linkedinUrl?: string
   linkedinLinks?: { url: string; label: string }[]
@@ -43,6 +44,7 @@ const projects: Project[] = [
   {
     title: "Sixty Club",
     role: "Full Stack Developer",
+    context: "2026",
     description: "Desarrollo de plataforma integral para gestión de clubes.",
     highlights: [
       { icon: FileCode, text: "Documentación de API con OpenAPI/Swagger" },
@@ -54,6 +56,7 @@ const projects: Project[] = [
     icon: Users,
     span: "md:col-span-2",
     accent: "primary",
+    liveUrl: "https://www.sixtyclub.win/",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_orgulloso-de-lo-que-logramos-por-mas-proyectos-ugcPost-7458195361224880128-NUhm/",
   },
   {
@@ -85,7 +88,7 @@ const projects: Project[] = [
     tech: ["Python"],
     icon: Trophy,
     span: "md:col-span-1",
-    accent: "accent",
+    accent: "highlight",
     repoUrl: "https://github.com/gonzaorban/TAP",
     linkedinLinks: [
       {
@@ -99,6 +102,32 @@ const projects: Project[] = [
     ],
   },
 ]
+
+const accentStyles: Record<Project["accent"], {
+  text: string
+  textHover: string
+  textSoft: string
+  bg: string
+}> = {
+  primary: {
+    text: "text-primary",
+    textHover: "group-hover:text-primary",
+    textSoft: "text-primary/70",
+    bg: "bg-primary/10",
+  },
+  accent: {
+    text: "text-accent",
+    textHover: "group-hover:text-accent",
+    textSoft: "text-accent/70",
+    bg: "bg-accent/10",
+  },
+  highlight: {
+    text: "text-highlight",
+    textHover: "group-hover:text-highlight",
+    textSoft: "text-highlight/70",
+    bg: "bg-highlight/10",
+  },
+}
 
 export function ProjectBento() {
   return (
@@ -116,7 +145,9 @@ export function ProjectBento() {
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const accent = accentStyles[project.accent]
+            return (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -128,15 +159,15 @@ export function ProjectBento() {
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-lg ${project.accent === 'primary' ? 'bg-primary/10' : 'bg-accent/10'} flex items-center justify-center shrink-0`}>
-                    <project.icon className={`w-6 h-6 ${project.accent === 'primary' ? 'text-primary' : 'text-accent'}`} />
+                  <div className={`w-12 h-12 rounded-lg ${accent.bg} flex items-center justify-center shrink-0`}>
+                    <project.icon className={`w-6 h-6 ${accent.text}`} />
                   </div>
                   <div>
-                    <h3 className={`font-semibold text-lg group-hover:${project.accent === 'primary' ? 'text-primary' : 'text-accent'} transition-colors`}>
+                    <h3 className={`font-semibold text-lg ${accent.textHover} transition-colors`}>
                       {project.title}
                     </h3>
                     <div className="flex flex-wrap items-center gap-2 mt-1">
-                      <span className={`text-xs font-mono ${project.accent === 'primary' ? 'text-primary' : 'text-accent'}`}>
+                      <span className={`text-xs font-mono ${accent.text}`}>
                         {project.role}
                       </span>
                       {project.context && (
@@ -148,7 +179,6 @@ export function ProjectBento() {
                     </div>
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </div>
 
               {/* Description */}
@@ -160,7 +190,7 @@ export function ProjectBento() {
               <div className="space-y-2 mb-5">
                 {project.highlights.map((highlight, i) => (
                   <div key={i} className="flex items-start gap-3 text-sm">
-                    <highlight.icon className={`w-4 h-4 mt-0.5 shrink-0 ${project.accent === 'primary' ? 'text-primary/70' : 'text-accent/70'}`} />
+                    <highlight.icon className={`w-4 h-4 mt-0.5 shrink-0 ${accent.textSoft}`} />
                     <span className="text-muted-foreground leading-relaxed">{highlight.text}</span>
                   </div>
                 ))}
@@ -177,16 +207,23 @@ export function ProjectBento() {
 
               {/* Links */}
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-anim link-live text-sm font-medium"
+                  >
+                    <Globe className="w-4 h-4" />
+                    Ver Deploy
+                  </a>
+                )}
                 {project.repoUrl && (
                   <a
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`link-anim text-sm font-medium ${
-                      project.accent === 'primary'
-                        ? 'text-primary hover:text-primary/80'
-                        : 'text-accent hover:text-accent/80'
-                    }`}
+                    className="link-anim link-repo text-sm font-medium"
                   >
                     <Github className="w-4 h-4" />
                     Ver Repositorio
@@ -217,7 +254,8 @@ export function ProjectBento() {
                 ))}
               </div>
             </motion.div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

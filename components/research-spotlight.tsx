@@ -91,7 +91,7 @@ export function ResearchSpotlight() {
             
             {/* Congress Context - More discrete */}
             <p className="text-[11px] text-muted-foreground/70 mb-3 pl-16">
-              13° CoNaIISI (RIISIC / UTN-FRC)
+              13° CoNaIISI (RIISIC / UTN-FRC) · 2025
             </p>
             
             {/* Brief Description */}
