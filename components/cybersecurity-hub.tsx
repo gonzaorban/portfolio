@@ -11,8 +11,16 @@ const platforms = [
     icon: Shield,
     color: "text-purple-400",
     link: "https://app.softwareseguro.com.ar/ranking",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
-    linkedinText: "HackLab 2025",
+    linkedinPosts: [
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
+        text: "HackLab 2025",
+      },
+      {
+        url: "https://lnkd.in/p/dmHdpS5Q",
+        text: "HackLab 2026",
+      },
+    ],
   },
   {
     name: "HackTheBox",
@@ -21,8 +29,12 @@ const platforms = [
     icon: Terminal,
     color: "text-green-400",
     link: "https://app.hackthebox.com/users/2634163?profile-top-tab=machines&ownership-period=1M&profile-bottom-tab=prolabs",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
-    linkedinText: "University CTF 2025",
+    linkedinPosts: [
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-activity-7409708585808498688-6-kE",
+        text: "University CTF 2025",
+      },
+    ],
   },
   {
     name: "TryHackMe",
@@ -31,8 +43,7 @@ const platforms = [
     icon: Target,
     color: "text-red-400",
     link: "https://tryhackme.com/p/gonzaorban",
-    linkedinUrl: null,
-    linkedinText: null,
+    linkedinPosts: [],
   },
   {
     name: "CyLab Security Academy",
@@ -41,8 +52,12 @@ const platforms = [
     icon: Flag,
     color: "text-blue-400",
     link: "https://learn.cylabacademy.org/users/gonzaorban",
-    linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
-    linkedinText: "picoCTF 2026",
+    linkedinPosts: [
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
+        text: "picoCTF 2026",
+      },
+    ],
   },
 ]
 
@@ -136,16 +151,19 @@ export function CybersecurityHub() {
                     <ExternalLink className="w-3 h-3 shrink-0" />
                   </a>
 
-                  {platform.linkedinUrl ? (
-                    <a
-                      href={platform.linkedinUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-anim link-linkedin text-[11px]"
-                    >
-                      <Linkedin className="w-3 h-3 shrink-0" />
-                      <span>{platform.linkedinText}</span>
-                    </a>
+                  {platform.linkedinPosts.length > 0 ? (
+                    platform.linkedinPosts.map((post) => (
+                      <a
+                        key={post.url}
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-anim link-linkedin text-[11px]"
+                      >
+                        <Linkedin className="w-3 h-3 shrink-0" />
+                        <span>{post.text}</span>
+                      </a>
+                    ))
                   ) : (
                     /* Reserva el alto del segundo link para que las tarjetas
                        sin publicacion no queden desalineadas */
