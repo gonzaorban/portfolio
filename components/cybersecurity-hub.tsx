@@ -40,7 +40,7 @@ const platforms = [
     description: "Ver mi perfil",
     icon: Flag,
     color: "text-blue-400",
-    link: "https://play.picoctf.org/users/gonzaorban",
+    link: "https://learn.cylabacademy.org/users/gonzaorban",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-picoctf-2026-activity-7441251000369274881-8dTP",
     linkedinText: "picoCTF 2026",
   },
