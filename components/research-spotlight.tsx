@@ -5,7 +5,7 @@ import { FlaskConical, Award, Linkedin, Microscope, CheckCircle2 } from "lucide-
 
 export function ResearchSpotlight() {
   return (
-    <section className="py-20 px-4 relative">
+    <section id="investigacion" className="scroll-mt-20 py-20 px-4 relative">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/3 via-accent/2 to-transparent pointer-events-none" />
       
