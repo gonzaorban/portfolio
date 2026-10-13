@@ -96,7 +96,7 @@ const skills = [
 
 export function CybersecurityHub() {
   return (
-    <section className="py-20 px-4">
+    <section id="ciberseguridad" className="scroll-mt-20 py-20 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
