@@ -14,13 +14,12 @@ import {
   PlayCircle,
   MonitorSmartphone,
   Shield,
-  ListOrdered,
 } from "lucide-react"
 
 interface CompetitionLink {
   url: string
   label: string
-  kind: "repo" | "linkedin" | "video" | "prototype" | "ranking"
+  kind: "repo" | "linkedin" | "video" | "prototype"
 }
 
 interface Rank {
@@ -107,9 +106,7 @@ const competitions: Competition[] = [
     ],
     icon: Shield,
     accent: "primary",
-    links: [
-      { url: "https://app.softwareseguro.com.ar/ranking", label: "Ver Ranking", kind: "ranking" },
-    ],
+    links: [],
   },
   {
     title: "Rally Latinoamericano de Innovación",
@@ -164,7 +161,6 @@ const linkStyles: Record<CompetitionLink["kind"], { icon: typeof Trophy; classNa
   linkedin: { icon: Linkedin, className: "link-linkedin" },
   video: { icon: PlayCircle, className: "link-live" },
   prototype: { icon: MonitorSmartphone, className: "link-repo" },
-  ranking: { icon: ListOrdered, className: "link-live" },
 }
 
 // Puestos de podio (1.º a 3.º) se destacan con medalla en ambar
@@ -311,36 +307,40 @@ export function Competitions() {
                   </div>
                 )}
 
-                {/* Pie anclado abajo: tecnologias (si hay) y links */}
-                <div className="mt-auto pt-4 border-t border-border/30">
-                  {competition.tech && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {competition.tech.map((tech) => (
-                        <span key={tech} className="tech-badge">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                {/* Pie anclado abajo: tecnologias y links, solo si hay alguno */}
+                {(competition.tech || competition.links.length > 0) && (
+                  <div className="mt-auto space-y-4 pt-4 border-t border-border/30">
+                    {competition.tech && (
+                      <div className="flex flex-wrap gap-2">
+                        {competition.tech.map((tech) => (
+                          <span key={tech} className="tech-badge">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                    {competition.links.map((link) => {
-                      const style = linkStyles[link.kind]
-                      return (
-                        <a
-                          key={link.url}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`link-anim ${style.className} text-sm font-medium`}
-                        >
-                          <style.icon className="w-4 h-4" />
-                          {link.label}
-                        </a>
-                      )
-                    })}
+                    {competition.links.length > 0 && (
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                        {competition.links.map((link) => {
+                          const style = linkStyles[link.kind]
+                          return (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`link-anim ${style.className} text-sm font-medium`}
+                            >
+                              <style.icon className="w-4 h-4" />
+                              {link.label}
+                            </a>
+                          )
+                        })}
+                      </div>
+                    )}
                   </div>
-                </div>
+                )}
               </motion.div>
             )
           })}
