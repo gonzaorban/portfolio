@@ -122,7 +122,7 @@ const competitions: Competition[] = [
     accent: "accent",
     links: [
       { url: "https://lnkd.in/dg_kgsgT", label: "Video", kind: "video" },
-      { url: "https://lnkd.in/d5U5yH-j", label: "Prototipo", kind: "prototype" },
+      { url: "https://caminito.vercel.app/", label: "Prototipo", kind: "prototype" },
       { url: "https://lnkd.in/p/dUqE2YZ3", label: "LinkedIn", kind: "linkedin" },
     ],
   },
