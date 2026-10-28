@@ -96,8 +96,8 @@ const skills = [
 
 export function CybersecurityHub() {
   return (
-    <section id="ciberseguridad" className="scroll-mt-20 py-20 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section id="ciberseguridad" className="scroll-mt-20 py-20">
+      <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -216,7 +216,7 @@ export function CybersecurityHub() {
           Skills
         </motion.h3>
         
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}

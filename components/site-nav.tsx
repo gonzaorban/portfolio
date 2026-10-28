@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const sections = [
@@ -15,6 +16,7 @@ const sections = [
 export function SiteNav() {
   const [active, setActive] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const elements = sections
@@ -55,12 +57,14 @@ export function SiteNav() {
     event.preventDefault()
     target.scrollIntoView({ behavior: "smooth", block: "start" })
     setActive(id)
+    setMenuOpen(false)
   }
 
   const goTop = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
     window.scrollTo({ top: 0, behavior: "smooth" })
     setActive(null)
+    setMenuOpen(false)
   }
 
   return (
@@ -71,7 +75,7 @@ export function SiteNav() {
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-colors duration-300",
-        scrolled
+        scrolled || menuOpen
           ? "border-b border-primary/15 bg-background/80 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
           : "border-b border-transparent bg-background/40",
       )}
@@ -81,11 +85,11 @@ export function SiteNav() {
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-primary/60 via-accent/40 to-transparent transition-transform duration-500",
-          scrolled ? "scale-x-100" : "scale-x-0",
+          scrolled || menuOpen ? "scale-x-100" : "scale-x-0",
         )}
       />
 
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+      <div className="container-wide flex items-center justify-between gap-4 py-3">
         {/* Logotipo estilo terminal, en mono, acorde al Hero */}
         <a
           href="#top"
@@ -102,7 +106,8 @@ export function SiteNav() {
           <span className="text-primary terminal-cursor">_</span>
         </a>
 
-        <ul className="flex items-center gap-0.5 overflow-x-auto font-mono sm:gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Desktop: todas las secciones en linea */}
+        <ul className="hidden items-center gap-1 font-mono lg:flex">
           {sections.map((section, index) => {
             const isActive = active === section.id
             return (
@@ -112,7 +117,7 @@ export function SiteNav() {
                   onClick={(event) => handleClick(event, section.id)}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "relative flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs transition-colors duration-200 sm:text-[13px]",
+                    "relative flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] transition-colors duration-200",
                     isActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground",
@@ -136,15 +141,63 @@ export function SiteNav() {
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="hidden sm:inline">{section.label}</span>
-                  {/* En pantallas chicas mostramos solo la primera palabra */}
-                  <span className="sm:hidden">{section.label.split(" ")[0]}</span>
+                  <span>{section.label}</span>
                 </a>
               </li>
             )
           })}
         </ul>
+
+        {/* Celular y tablet: boton que despliega el menu */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-controls="menu-secciones"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary lg:hidden"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.ul
+            id="menu-secciones"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="container-wide overflow-hidden font-mono lg:hidden"
+          >
+            {sections.map((section, index) => {
+              const isActive = active === section.id
+              return (
+                <li key={section.id} className="border-t border-border/30 first:border-t-0">
+                  <a
+                    href={`#${section.id}`}
+                    onClick={(event) => handleClick(event, section.id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={cn(
+                      "flex items-center gap-3 py-3.5 text-sm transition-colors",
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={cn("text-xs tabular-nums", isActive ? "text-primary/70" : "text-muted-foreground/50")}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {section.label}
+                  </a>
+                </li>
+              )
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }

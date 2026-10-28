@@ -28,8 +28,8 @@ const lastUpdated = lastUpdatedRaw
 
 export function Footer() {
   return (
-    <footer className="py-8 px-4 border-t border-border/30">
-      <div className="max-w-5xl mx-auto">
+    <footer className="py-8 border-t border-border/30">
+      <div className="container-wide">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo / Name */}
           <motion.div

@@ -60,8 +60,8 @@ const languages = [
 
 export function TechStack() {
   return (
-    <section id="stack" className="scroll-mt-20 py-20 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section id="stack" className="scroll-mt-20 py-20">
+      <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export function TechStack() {
           <h2 className="text-2xl md:text-3xl font-bold">Stack Tecnológico</h2>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mb-8">
           {categories.map((category, index) => (
             <motion.div
               key={category.title}

@@ -102,6 +102,16 @@
   }
 }
 
+/* Contenedor de todas las secciones: ocupa casi todo el ancho en monitores
+   grandes (tope 1600px para que las lineas no se estiren de mas) y el
+   padding lateral crece con el viewport, de 1rem en celular a 4rem. */
+@utility container-wide {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
 /* Custom scrollbar for dark theme */
 ::-webkit-scrollbar {
   width: 8px;

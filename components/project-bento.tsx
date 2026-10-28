@@ -54,7 +54,7 @@ const projects: Project[] = [
     ],
     tech: ["Django", "Next.js", "PostgreSQL", "JWT", "RBAC"],
     icon: Users,
-    span: "md:col-span-2",
+    span: "md:col-span-2 xl:col-span-1",
     accent: "primary",
     liveUrl: "https://www.sixtyclub.win/",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_orgulloso-de-lo-que-logramos-por-mas-proyectos-ugcPost-7458195361224880128-NUhm/",
@@ -72,7 +72,7 @@ const projects: Project[] = [
     ],
     tech: ["NestJS", "Next.js", "MySQL", "Keycloak", "NGINX"],
     icon: Server,
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     accent: "accent",
     repoUrl: "https://github.com/FRRe-DS/2025-03-TPI",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_de-la-teor%C3%ADa-a-la-pr%C3%A1ctica-microservicios-activity-7402749299010428928-mS7Y",
@@ -131,8 +131,8 @@ const accentStyles: Record<Project["accent"], {
 
 export function ProjectBento() {
   return (
-    <section id="experiencia" className="scroll-mt-20 py-20 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section id="experiencia" className="scroll-mt-20 py-20">
+      <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export function ProjectBento() {
           <h2 className="text-2xl md:text-3xl font-bold">Experiencia y Proyectos</h2>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => {
             const accent = accentStyles[project.accent]
             return (
