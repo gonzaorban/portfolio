@@ -41,7 +41,8 @@ interface Competition {
   role?: string
   context?: string
   placement?: string
-  description: string
+  // Un string es un parrafo; una lista se muestra como varios parrafos
+  description: string | string[]
   results?: EditionResult[]
   highlights?: { icon: typeof Trophy; text: string }[]
   // Solo tecnologias; las competencias sin stack propio no lo llevan
@@ -86,7 +87,10 @@ const competitions: Competition[] = [
     title: "HackLab",
     role: "CTF Player",
     context: "2025 · 2026",
-    description: "Competencia nacional de ciberseguridad de la UTN, disputada en la plataforma SoftwareSeguro.",
+    description: [
+      "Competencia de ciberseguridad tipo Capture The Flag (CTF), donde equipos de Argentina y México ponen a prueba sus conocimientos resolviendo desafíos reales en un entorno seguro.",
+      "Durante 32 horas deberás analizar sistemas, explotar vulnerabilidades, investigar incidentes y resolver problemas de distintas áreas de la seguridad informática. Categorías: Seguridad Web, Linux, Mobile, Criptografía, Forense, Reverse Engineering, Redes y Blockchain.",
+    ],
     results: [
       {
         edition: "2026",
@@ -237,7 +241,13 @@ export function Competitions() {
                   </span>
                 )}
 
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{competition.description}</p>
+                <div className="space-y-3 mb-4">
+                  {[competition.description].flat().map((paragraph) => (
+                    <p key={paragraph} className="text-sm text-muted-foreground leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
 
                 {competition.results && (
                   <div className="mb-5">
