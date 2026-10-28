@@ -89,7 +89,7 @@ const competitions: Competition[] = [
     context: "2025 · 2026",
     description: [
       "Competencia de ciberseguridad tipo Capture The Flag (CTF), donde equipos de Argentina y México ponen a prueba sus conocimientos resolviendo desafíos reales en un entorno seguro.",
-      "Durante 32 horas deberás analizar sistemas, explotar vulnerabilidades, investigar incidentes y resolver problemas de distintas áreas de la seguridad informática. Categorías: Seguridad Web, Linux, Mobile, Criptografía, Forense, Reverse Engineering, Redes y Blockchain.",
+      "Durante 32 horas analizamos sistemas, explotamos vulnerabilidades, investigamos incidentes y resolvimos problemas de distintas áreas de la seguridad informática. Categorías: Seguridad Web, Linux, Mobile, Criptografía, Forense, Reverse Engineering, Redes y Blockchain.",
     ],
     results: [
       {
