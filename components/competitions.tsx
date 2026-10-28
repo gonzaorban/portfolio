@@ -38,7 +38,7 @@ interface EditionResult {
 
 interface Competition {
   title: string
-  role: string
+  role?: string
   context?: string
   placement?: string
   description: string
@@ -109,7 +109,6 @@ const competitions: Competition[] = [
   },
   {
     title: "Rally Latinoamericano de Innovación",
-    role: "Equipo Big Brain",
     context: "2026",
     placement: "2° · Impacto Social · Sede UTN FRRe",
     description:
@@ -216,12 +215,14 @@ export function Competitions() {
                       {competition.title}
                     </h3>
                     <div className="flex flex-wrap items-center gap-2 mt-1">
-                      <span className={`text-xs font-mono ${accent.text}`}>{competition.role}</span>
+                      {competition.role && (
+                        <span className={`text-xs font-mono ${accent.text}`}>{competition.role}</span>
+                      )}
+                      {competition.role && competition.context && (
+                        <span className="text-muted-foreground">·</span>
+                      )}
                       {competition.context && (
-                        <>
-                          <span className="text-muted-foreground">·</span>
-                          <span className="text-xs text-muted-foreground">{competition.context}</span>
-                        </>
+                        <span className="text-xs text-muted-foreground">{competition.context}</span>
                       )}
                     </div>
                   </div>
