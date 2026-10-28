@@ -117,7 +117,7 @@ const competitions: Competition[] = [
     highlights: [
       {
         icon: Smartphone,
-        text: "Caminante 🛴: reutiliza celulares en desuso montados en un dispositivo con ruedas, cuyas cámaras y acelerómetros detectan baldosas levantadas, pozos y grietas",
+        text: "Caminante 🛴: reúne una base triangular rígida, tres apoyos y equipos reutilizados. Los celulares de la base registran movimiento; las cámaras superiores aportan contexto visual",
       },
       {
         icon: Route,
