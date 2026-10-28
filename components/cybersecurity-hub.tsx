@@ -11,16 +11,7 @@ const platforms = [
     icon: Shield,
     color: "text-purple-600 dark:text-purple-400",
     link: "https://app.softwareseguro.com.ar/ranking",
-    linkedinPosts: [
-      {
-        url: "https://www.linkedin.com/posts/gonzaorban_hacklab-2025-competencia-nacional-de-activity-7382128483705200640-kd0p",
-        text: "HackLab 2025",
-      },
-      {
-        url: "https://lnkd.in/p/dmHdpS5Q",
-        text: "HackLab 2026",
-      },
-    ],
+    linkedinPosts: [],
   },
   {
     name: "HackTheBox",
