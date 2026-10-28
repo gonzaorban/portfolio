@@ -7,7 +7,7 @@ import {
   Medal,
   FileCode,
   CheckCircle2,
-  Smartphone,
+  Scooter,
   Route,
   Github,
   Linkedin,
@@ -115,8 +115,8 @@ const competitions: Competition[] = [
       "En 28 horas diseñamos una solución para las veredas en mal estado que limitan la movilidad de muchas personas, sin fabricar hardware nuevo.",
     highlights: [
       {
-        icon: Smartphone,
-        text: "Caminante 🛴: reúne una base triangular rígida, tres apoyos y equipos reutilizados. Los celulares de la base registran movimiento; las cámaras superiores aportan contexto visual",
+        icon: Scooter,
+        text: "Caminante: reúne una base triangular rígida, tres apoyos y equipos reutilizados. Los celulares de la base registran movimiento; las cámaras superiores aportan contexto visual",
       },
       {
         icon: Route,
