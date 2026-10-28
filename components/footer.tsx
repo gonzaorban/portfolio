@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Circle } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 // Custom X (Twitter) icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -63,19 +63,6 @@ export function Footer() {
                 <link.icon className="w-5 h-5" />
               </a>
             ))}
-          </motion.div>
-
-          {/* System Status */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center gap-2 text-sm"
-          >
-            <Circle className="w-2 h-2 fill-primary text-primary animate-pulse" />
-            <span className="font-mono text-muted-foreground">Estado del Sistema:</span>
-            <span className="font-mono text-primary">Online</span>
           </motion.div>
         </div>
 
