@@ -9,7 +9,7 @@ const platforms = [
     subtitle: "Hacklab UTN",
     description: "Plataforma de entrenamiento",
     icon: Shield,
-    color: "text-purple-400",
+    color: "text-purple-600 dark:text-purple-400",
     link: "https://app.softwareseguro.com.ar/ranking",
     linkedinPosts: [
       {
@@ -27,7 +27,7 @@ const platforms = [
     subtitle: null,
     description: "Ver mi perfil",
     icon: Terminal,
-    color: "text-green-400",
+    color: "text-green-600 dark:text-green-400",
     link: "https://app.hackthebox.com/users/2634163?profile-top-tab=machines&ownership-period=1M&profile-bottom-tab=prolabs",
     linkedinPosts: [
       {
@@ -41,7 +41,7 @@ const platforms = [
     subtitle: null,
     description: "Ver mi perfil",
     icon: Target,
-    color: "text-red-400",
+    color: "text-red-600 dark:text-red-400",
     link: "https://tryhackme.com/p/gonzaorban",
     linkedinPosts: [],
   },
@@ -50,7 +50,7 @@ const platforms = [
     subtitle: null,
     description: "Ver mi perfil",
     icon: Flag,
-    color: "text-blue-400",
+    color: "text-blue-600 dark:text-blue-400",
     link: "https://learn.cylabacademy.org/users/gonzaorban",
     linkedinPosts: [
       {

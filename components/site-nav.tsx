@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const sections = [
   { id: "experiencia", label: "Experiencia" },
@@ -76,7 +77,7 @@ export function SiteNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-colors duration-300",
         scrolled || menuOpen
-          ? "border-b border-primary/15 bg-background/80 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+          ? "border-b border-primary/15 bg-background/80 shadow-[0_8px_30px_var(--shadow-color)]"
           : "border-b border-transparent bg-background/40",
       )}
     >
@@ -106,59 +107,63 @@ export function SiteNav() {
           <span className="text-primary terminal-cursor">_</span>
         </a>
 
-        {/* Desktop: todas las secciones en linea */}
-        <ul className="hidden items-center gap-1 font-mono lg:flex">
-          {sections.map((section, index) => {
-            const isActive = active === section.id
-            return (
-              <li key={section.id} className="relative shrink-0">
-                <a
-                  href={`#${section.id}`}
-                  onClick={(event) => handleClick(event, section.id)}
-                  aria-current={isActive ? "true" : undefined}
-                  className={cn(
-                    "relative flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] transition-colors duration-200",
-                    isActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {/* Pastilla deslizante detras del item activo */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      aria-hidden="true"
-                      className="absolute inset-0 -z-10 rounded-md border border-primary/25 bg-primary/10 shadow-[0_0_14px_color-mix(in_oklch,var(--primary)_28%,transparent)]"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    />
-                  )}
-                  <span
-                    aria-hidden="true"
+        <div className="flex items-center gap-2">
+          {/* Desktop: todas las secciones en linea */}
+          <ul className="hidden items-center gap-1 font-mono lg:flex">
+            {sections.map((section, index) => {
+              const isActive = active === section.id
+              return (
+                <li key={section.id} className="relative shrink-0">
+                  <a
+                    href={`#${section.id}`}
+                    onClick={(event) => handleClick(event, section.id)}
+                    aria-current={isActive ? "true" : undefined}
                     className={cn(
-                      "text-[10px] tabular-nums transition-colors",
-                      isActive ? "text-primary/70" : "text-muted-foreground/50",
+                      "relative flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] transition-colors duration-200",
+                      isActive
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground",
                     )}
                   >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{section.label}</span>
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+                    {/* Pastilla deslizante detras del item activo */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        aria-hidden="true"
+                        className="absolute inset-0 -z-10 rounded-md border border-primary/25 bg-primary/10 shadow-[0_0_14px_color-mix(in_oklch,var(--primary)_28%,transparent)]"
+                        transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      />
+                    )}
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "text-[10px] tabular-nums transition-colors",
+                        isActive ? "text-primary/70" : "text-muted-foreground/50",
+                      )}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{section.label}</span>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
 
-        {/* Celular y tablet: boton que despliega el menu */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="menu-secciones"
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary lg:hidden"
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <ThemeToggle />
+
+          {/* Celular y tablet: boton que despliega el menu */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="menu-secciones"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary lg:hidden"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
