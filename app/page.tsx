@@ -2,6 +2,7 @@ import { Hero } from "@/components/hero"
 import { ResearchSpotlight } from "@/components/research-spotlight"
 import { CybersecurityHub } from "@/components/cybersecurity-hub"
 import { ProjectBento } from "@/components/project-bento"
+import { Competitions } from "@/components/competitions"
 import { TechStack } from "@/components/tech-stack"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-transparent">
       <Hero />
       <ProjectBento />
+      <Competitions />
       <ResearchSpotlight />
       <CybersecurityHub />
       <TechStack />
