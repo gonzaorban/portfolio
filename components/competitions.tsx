@@ -115,7 +115,7 @@ const competitions: Competition[] = [
     description:
       "En 28 horas diseñamos una solución para las veredas en mal estado que limitan la movilidad de muchas personas, sin fabricar hardware nuevo.",
     highlights: [
-      { icon: Smartphone, text: "Caminante: celulares en desuso sobre ruedas detectan pozos, grietas y baldosas levantadas" },
+      { icon: Smartphone, text: "Caminante 🛴: celulares en desuso sobre ruedas detectan pozos, grietas y baldosas levantadas" },
       { icon: Route, text: "Caminito: guía por rutas accesibles y aporta evidencia al municipio para priorizar reparaciones" },
     ],
     icon: Lightbulb,
