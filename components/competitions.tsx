@@ -111,7 +111,7 @@ const competitions: Competition[] = [
   {
     title: "Rally Latinoamericano de Innovación",
     context: "2026",
-    placement: "2° · Impacto Social · Sede UTN FRRe",
+    placement: "2.º puesto · Impacto Social · Sede UTN FRRe",
     description:
       "En 28 horas diseñamos una solución para las veredas en mal estado que limitan la movilidad de muchas personas, sin fabricar hardware nuevo.",
     highlights: [
@@ -232,7 +232,6 @@ export function Competitions() {
                 {competition.placement && (
                   <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-highlight/30 bg-highlight/10 px-3 py-1 text-xs font-medium text-highlight">
                     <Medal className="w-3.5 h-3.5" />
-                    <span className="font-semibold">Puesto:</span>
                     {competition.placement}
                   </span>
                 )}
