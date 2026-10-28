@@ -28,7 +28,8 @@ interface Competition {
   placement?: string
   description: string
   highlights: { icon: typeof Trophy; text: string }[]
-  tags: string[]
+  // Solo tecnologias; las competencias sin stack propio no lo llevan
+  tech?: string[]
   icon: typeof Trophy
   accent: "highlight" | "accent"
   links: CompetitionLink[]
@@ -44,7 +45,7 @@ const competitions: Competition[] = [
       { icon: FileCode, text: "Algoritmos y estructuras de datos avanzadas" },
       { icon: CheckCircle2, text: "Problemas de competencias oficiales" },
     ],
-    tags: ["Python"],
+    tech: ["Python"],
     icon: Trophy,
     accent: "highlight",
     links: [
@@ -72,7 +73,6 @@ const competitions: Competition[] = [
       { icon: Smartphone, text: "Caminante: celulares en desuso sobre ruedas detectan pozos, grietas y baldosas levantadas" },
       { icon: Route, text: "Caminito: guía por rutas accesibles y aporta evidencia al municipio para priorizar reparaciones" },
     ],
-    tags: ["Impacto Social", "Accesibilidad"],
     icon: Lightbulb,
     accent: "accent",
     links: [
@@ -174,30 +174,35 @@ export function Competitions() {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-4 mt-auto border-t border-border/30">
-                  {competition.tags.map((tag) => (
-                    <span key={tag} className="tech-badge">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {/* Pie anclado abajo: tecnologias (si hay) y links */}
+                <div className="mt-auto pt-4 border-t border-border/30">
+                  {competition.tech && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {competition.tech.map((tech) => (
+                        <span key={tech} className="tech-badge">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4">
-                  {competition.links.map((link) => {
-                    const style = linkStyles[link.kind]
-                    return (
-                      <a
-                        key={link.url}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`link-anim ${style.className} text-sm font-medium`}
-                      >
-                        <style.icon className="w-4 h-4" />
-                        {link.label}
-                      </a>
-                    )
-                  })}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    {competition.links.map((link) => {
+                      const style = linkStyles[link.kind]
+                      return (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`link-anim ${style.className} text-sm font-medium`}
+                        >
+                          <style.icon className="w-4 h-4" />
+                          {link.label}
+                        </a>
+                      )
+                    })}
+                  </div>
                 </div>
               </motion.div>
             )
