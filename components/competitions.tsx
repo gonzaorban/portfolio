@@ -115,13 +115,19 @@ const competitions: Competition[] = [
     description:
       "En 28 horas diseñamos una solución para las veredas en mal estado que limitan la movilidad de muchas personas, sin fabricar hardware nuevo.",
     highlights: [
-      { icon: Smartphone, text: "Caminante 🛴: celulares en desuso sobre ruedas detectan pozos, grietas y baldosas levantadas" },
-      { icon: Route, text: "Caminito: guía por rutas accesibles y aporta evidencia al municipio para priorizar reparaciones" },
+      {
+        icon: Smartphone,
+        text: "Caminante 🛴: reutiliza celulares en desuso montados en un dispositivo con ruedas, cuyas cámaras y acelerómetros detectan baldosas levantadas, pozos y grietas",
+      },
+      {
+        icon: Route,
+        text: "Caminito: con esos datos, guía a personas con movilidad reducida o discapacidad visual por rutas accesibles, avisa de obstáculos y aporta evidencia al municipio para priorizar reparaciones",
+      },
     ],
     icon: Lightbulb,
     accent: "accent",
     links: [
-      { url: "https://lnkd.in/dg_kgsgT", label: "Video", kind: "video" },
+      { url: "https://youtu.be/nzMUxgbWwb0", label: "Video", kind: "video" },
       { url: "https://caminito.vercel.app/", label: "Prototipo", kind: "prototype" },
       { url: "https://lnkd.in/p/dUqE2YZ3", label: "LinkedIn", kind: "linkedin" },
     ],
