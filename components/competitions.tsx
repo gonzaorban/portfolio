@@ -25,7 +25,7 @@ interface Competition {
   title: string
   role: string
   context?: string
-  award?: string
+  placement?: string
   description: string
   highlights: { icon: typeof Trophy; text: string }[]
   tags: string[]
@@ -65,7 +65,7 @@ const competitions: Competition[] = [
     title: "Rally Latinoamericano de Innovación",
     role: "Equipo Big Brain",
     context: "2026",
-    award: "2° puesto · Impacto Social · Sede UTN FRRe",
+    placement: "2° · Impacto Social · Sede UTN FRRe",
     description:
       "En 28 horas diseñamos una solución para las veredas en mal estado que limitan la movilidad de muchas personas, sin fabricar hardware nuevo.",
     highlights: [
@@ -154,11 +154,12 @@ export function Competitions() {
                   </div>
                 </div>
 
-                {/* Premio */}
-                {competition.award && (
+                {/* Puesto obtenido */}
+                {competition.placement && (
                   <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-highlight/30 bg-highlight/10 px-3 py-1 text-xs font-medium text-highlight">
                     <Medal className="w-3.5 h-3.5" />
-                    {competition.award}
+                    <span className="font-semibold">Puesto:</span>
+                    {competition.placement}
                   </span>
                 )}
 
