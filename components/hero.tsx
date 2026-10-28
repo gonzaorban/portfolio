@@ -20,59 +20,62 @@ const socialLinks = [
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-4 py-20 relative overflow-hidden">
+    <section className="min-h-svh flex flex-col justify-center pt-24 pb-16 lg:py-20 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none" />
       
-      <div className="max-w-5xl mx-auto w-full relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex items-center gap-2 text-muted-foreground"
-        >
-          <MapPin className="w-4 h-4" />
-          <span className="text-sm font-mono">Resistencia, Chaco, Argentina</span>
-        </motion.div>
+      {/* En desktop: presentacion a la izquierda y terminal a la derecha */}
+      <div className="container-wide relative z-10 grid items-center gap-12 lg:grid-cols-2 xl:gap-20">
+        <div>
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 flex items-center gap-2 text-muted-foreground"
+          >
+            <MapPin className="w-4 h-4" />
+            <span className="text-sm font-mono">Resistencia, Chaco, Argentina</span>
+          </motion.div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-balance"
-        >
-          <span className="text-foreground whitespace-nowrap">Gonzalo Tomás</span>{" "}
-          <span className="text-primary whitespace-nowrap">Orban</span>
-        </motion.h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl 2xl:text-7xl font-bold mb-4 text-balance"
+          >
+            <span className="text-foreground whitespace-nowrap">Gonzalo Tomás</span>{" "}
+            <span className="text-primary whitespace-nowrap">Orban</span>
+          </motion.h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
-        >
-          Desarrollando Sistemas Seguros y Escalables. Apasionado por la arquitectura de software y la ciberseguridad.
-        </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
+          >
+            Desarrollando Sistemas Seguros y Escalables. Apasionado por la arquitectura de software y la ciberseguridad.
+          </motion.p>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex gap-4 mb-12"
-        >
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link w-11 h-11 flex items-center justify-center rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/50 glass glass-hover"
-              aria-label={link.label}
-            >
-              <link.icon className="w-5 h-5" />
-            </a>
-          ))}
-        </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex gap-4"
+          >
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link w-11 h-11 flex items-center justify-center rounded-lg border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/50 glass glass-hover"
+                aria-label={link.label}
+              >
+                <link.icon className="w-5 h-5" />
+              </a>
+            ))}
+          </motion.div>
+        </div>
 
         <Terminal />
       </div>

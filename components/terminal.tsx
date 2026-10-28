@@ -48,7 +48,7 @@ export function Terminal() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="w-full max-w-2xl mx-auto"
+      className="w-full max-w-2xl mx-auto lg:max-w-none"
     >
       <div className="rounded-lg border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
         {/* Terminal Header */}

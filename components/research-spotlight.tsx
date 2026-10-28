@@ -5,11 +5,11 @@ import { FlaskConical, Award, Linkedin, Microscope, CheckCircle2 } from "lucide-
 
 export function ResearchSpotlight() {
   return (
-    <section id="investigacion" className="scroll-mt-20 py-20 px-4 relative">
+    <section id="investigacion" className="scroll-mt-20 py-20 relative">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/3 via-accent/2 to-transparent pointer-events-none" />
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
