@@ -11,9 +11,7 @@ import {
   TestTube, 
   GitBranch,
   Container,
-  CheckCircle2,
   Boxes,
-  Trophy,
   Github,
   Linkedin,
   Globe
@@ -37,7 +35,6 @@ interface Project {
   liveUrl?: string
   repoUrl?: string
   linkedinUrl?: string
-  linkedinLinks?: { url: string; label: string }[]
 }
 
 const projects: Project[] = [
@@ -54,7 +51,7 @@ const projects: Project[] = [
     ],
     tech: ["Django", "Next.js", "PostgreSQL", "JWT", "RBAC"],
     icon: Users,
-    span: "md:col-span-2 xl:col-span-1",
+    span: "md:col-span-1",
     accent: "primary",
     liveUrl: "https://www.sixtyclub.win/",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_orgulloso-de-lo-que-logramos-por-mas-proyectos-ugcPost-7458195361224880128-NUhm/",
@@ -76,30 +73,6 @@ const projects: Project[] = [
     accent: "accent",
     repoUrl: "https://github.com/FRRe-DS/2025-03-TPI",
     linkedinUrl: "https://www.linkedin.com/posts/gonzaorban_de-la-teor%C3%ADa-a-la-pr%C3%A1ctica-microservicios-activity-7402749299010428928-mS7Y",
-  },
-  {
-    title: "ICPC - TAP",
-    role: "Competitive Programmer",
-    description: "Soluciones y entrenamiento para competencias de programación ICPC y TAP.",
-    highlights: [
-      { icon: FileCode, text: "Algoritmos y estructuras de datos avanzadas" },
-      { icon: CheckCircle2, text: "Problemas de competencias oficiales" },
-    ],
-    tech: ["Python"],
-    icon: Trophy,
-    span: "md:col-span-1",
-    accent: "highlight",
-    repoUrl: "https://github.com/gonzaorban/TAP",
-    linkedinLinks: [
-      {
-        url: "https://www.linkedin.com/posts/gonzaorban_icpc-argentina-2025-icpc-international-activity-7365448215111884801-3Vx6",
-        label: "Edición 2025",
-      },
-      {
-        url: "https://www.linkedin.com/posts/gonzaorban_icpc-tap-2026-por-segundo-a%C3%B1o-consecutivo-activity-7500567116048252929-UU3n",
-        label: "Edición 2026",
-      },
-    ],
   },
 ]
 
@@ -144,7 +117,7 @@ export function ProjectBento() {
           <h2 className="text-2xl md:text-3xl font-bold">Experiencia y Proyectos</h2>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => {
             const accent = accentStyles[project.accent]
             return (
@@ -240,18 +213,6 @@ export function ProjectBento() {
                     LinkedIn
                   </a>
                 )}
-                {project.linkedinLinks?.map((item) => (
-                  <a
-                    key={item.url}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-anim link-linkedin text-sm font-medium"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    {item.label}
-                  </a>
-                ))}
               </div>
             </motion.div>
             )
