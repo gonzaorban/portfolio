@@ -14,12 +14,13 @@ import {
   PlayCircle,
   MonitorSmartphone,
   Shield,
+  UserRound,
 } from "lucide-react"
 
 interface CompetitionLink {
   url: string
   label: string
-  kind: "repo" | "linkedin" | "video" | "prototype"
+  kind: "repo" | "linkedin" | "video" | "prototype" | "icpc"
 }
 
 interface Rank {
@@ -80,6 +81,7 @@ const competitions: Competition[] = [
     accent: "highlight",
     links: [
       { url: "https://github.com/gonzaorban/TAP", label: "Ver Repositorio", kind: "repo" },
+      { url: "https://icpc.global/ICPCID/X4SWHQVP5DRB", label: "Perfil", kind: "icpc" },
     ],
   },
   {
@@ -161,6 +163,7 @@ const linkStyles: Record<CompetitionLink["kind"], { icon: typeof Trophy; classNa
   linkedin: { icon: Linkedin, className: "link-linkedin" },
   video: { icon: PlayCircle, className: "link-live" },
   prototype: { icon: MonitorSmartphone, className: "link-repo" },
+  icpc: { icon: UserRound, className: "link-highlight" },
 }
 
 // Puestos de podio (1.º a 3.º) se destacan con medalla en ambar
