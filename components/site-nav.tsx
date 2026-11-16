@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 const sections = [
   { id: "experiencia", label: "Experiencia" },
   { id: "competencias", label: "Competencias" },
+  { id: "eventos", label: "Eventos" },
   { id: "investigacion", label: "Investigación" },
   { id: "ciberseguridad", label: "Ciberseguridad" },
   { id: "stack", label: "Stack" },
