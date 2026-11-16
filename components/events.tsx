@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CalendarDays, MapPin, Linkedin, ExternalLink, Users } from "lucide-react"
+import { CalendarDays, MapPin, Linkedin, ExternalLink, Users, Mic, Handshake } from "lucide-react"
 
 interface EventLink {
   url: string
@@ -22,13 +22,52 @@ interface CommunityEvent {
   // Un string es un parrafo; una lista se muestra como varios parrafos
   description: string | string[]
   stats?: EventStat[]
+  // Fotos en public/events; la primera ocupa todo el ancho en celular
+  photos?: { src: string; alt: string }[]
   highlights?: { icon: typeof Users; text: string }[]
   icon: typeof Users
   accent: "highlight" | "accent" | "primary"
   links: EventLink[]
 }
 
-const events: CommunityEvent[] = []
+const events: CommunityEvent[] = [
+  {
+    title: "v0 Meetup Resistencia",
+    role: "Co-organizador",
+    date: "28/03/2026",
+    location: "Casa de las Culturas · Resistencia, Chaco",
+    description: [
+      "Organizamos junto a Alejo Rojas la primera Meetup de v0 by Vercel en Resistencia, con el respaldo oficial de Vercel, para profundizar sobre los desafíos actuales en IA y Ciberseguridad.",
+      "Fue la tercera meetup de la comunidad y la primera en la que me sumé a la organización. Cerramos la jornada con un espacio de networking para seguir conectando a la comunidad tecnológica de la región.",
+    ],
+    stats: [
+      { value: "300+", label: "asistentes" },
+      { value: "450+", label: "inscriptos" },
+      { value: "3.ª", label: "meetup de la comunidad" },
+    ],
+    photos: [
+      {
+        src: "/events/v0-meetup-resistencia-publico.jpg",
+        alt: "Sala de la Casa de las Culturas llena de asistentes durante la v0 Meetup",
+      },
+      {
+        src: "/events/v0-meetup-resistencia-apertura.jpg",
+        alt: "Apertura de la v0 Meetup en el escenario, con el logo de v0 proyectado",
+      },
+      {
+        src: "/events/v0-meetup-resistencia-charla.jpg",
+        alt: "Charla sobre gobierno de la ciberseguridad en la era de la IA vista desde el público",
+      },
+    ],
+    highlights: [
+      { icon: Mic, text: "Charlas de Diego Bolatti y Gonzalo Ivan Zelinka sobre IA y Ciberseguridad" },
+      { icon: Handshake, text: "Organizado con el apoyo del ICCTI Chaco y el equipo de Vercel" },
+    ],
+    icon: Users,
+    accent: "primary",
+    links: [{ url: "https://lnkd.in/p/dbJWaZGs", label: "LinkedIn", kind: "linkedin" }],
+  },
+]
 
 const accentStyles: Record<CommunityEvent["accent"], { text: string; textHover: string; textSoft: string; bg: string }> = {
   primary: {
@@ -128,6 +167,27 @@ export function Events() {
                     </p>
                   ))}
                 </div>
+
+                {event.photos && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-5">
+                    {event.photos.map((photo, i) => (
+                      <a
+                        key={photo.src}
+                        href={photo.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`block overflow-hidden rounded-lg border border-border/40 ${i === 0 ? "col-span-2 sm:col-span-1" : ""}`}
+                      >
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          loading="lazy"
+                          className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                )}
 
                 {event.highlights && (
                   <div className="space-y-2 mb-5">
