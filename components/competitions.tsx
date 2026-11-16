@@ -15,12 +15,16 @@ import {
   MonitorSmartphone,
   Shield,
   UserRound,
+  Flag,
+  Target,
+  Users,
+  ExternalLink,
 } from "lucide-react"
 
 interface CompetitionLink {
   url: string
   label: string
-  kind: "repo" | "linkedin" | "video" | "prototype" | "icpc"
+  kind: "repo" | "linkedin" | "video" | "prototype" | "icpc" | "event"
 }
 
 interface Rank {
@@ -111,6 +115,51 @@ const competitions: Competition[] = [
     links: [],
   },
   {
+    title: "Hack The Box University CTF",
+    role: "CTF Player",
+    context: "2025",
+    description: [
+      "Competencia internacional entre universidades de todo el mundo, con más de 5.300 jugadores en más de 1.000 equipos. A lo largo de 21 escenarios realistas resolvimos desafíos de Web, Crypto, Pwn, Reversing, Forensics, Coding y OSINT.",
+      "Cada facultad competía con un único equipo: representamos a la UTN FRRe junto a Gaston Lovera.",
+    ],
+    highlights: [
+      { icon: Trophy, text: "Puesto 171.º entre más de 1.000 equipos" },
+      { icon: CheckCircle2, text: "30 de 34 desafíos resueltos" },
+      { icon: Users, text: "Trabajo colaborativo bajo presión en 7 categorías" },
+    ],
+    icon: Flag,
+    accent: "accent",
+    links: [
+      {
+        url: "https://ctf.hackthebox.com/event/details/university-ctf-2025-tinsel-trouble-2993",
+        label: "Competencia",
+        kind: "event",
+      },
+      {
+        url: "https://www.linkedin.com/posts/gonzaorban_participaci%C3%B3n-en-el-university-ctf-2025-share-7409708584382472192--8PJ",
+        label: "LinkedIn",
+        kind: "linkedin",
+      },
+    ],
+  },
+  {
+    title: "picoCTF",
+    role: "CTF Player",
+    context: "2026",
+    description: [
+      "Uno de los CTF más reconocidos a nivel global. Competimos como equipo \"Big Brain\" junto a Gaston Lovera, Juan Ignacio Rodríguez Leiva, Lautaro Emanuel Sandoval y Jeronimo Zapata.",
+      "Durante varios días resolvimos desafíos de Web Exploitation, Cryptography, Reverse Engineering, Forensics, Binary Exploitation, Blockchain y General Skills, automatizando ataques con scripts propios.",
+    ],
+    highlights: [
+      { icon: Trophy, text: "Puesto 356.º mundial entre ~4.000 equipos que puntuaron" },
+      { icon: CheckCircle2, text: "67 de 70 desafíos resueltos · 13.100 / 14.500 puntos" },
+    ],
+    tech: ["Kali Linux", "Ghidra", "Wireshark", "ExifTool", "Remix IDE", "Python", "Netcat", "objdump"],
+    icon: Target,
+    accent: "highlight",
+    links: [{ url: "https://play.picoctf.org/events/79", label: "Competencia", kind: "event" }],
+  },
+  {
     title: "Rally Latinoamericano de Innovación",
     context: "2026",
     placement: "2.º puesto · Impacto Social · Sede UTN FRRe",
@@ -164,6 +213,7 @@ const linkStyles: Record<CompetitionLink["kind"], { icon: typeof Trophy; classNa
   video: { icon: PlayCircle, className: "link-live" },
   prototype: { icon: MonitorSmartphone, className: "link-repo" },
   icpc: { icon: UserRound, className: "link-highlight" },
+  event: { icon: ExternalLink, className: "link-live" },
 }
 
 // Puestos de podio (1.º a 3.º) se destacan con medalla en ambar
