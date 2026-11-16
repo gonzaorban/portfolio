@@ -19,6 +19,7 @@ interface CommunityEvent {
   role: string
   date: string
   location?: string
+  locationUrl?: string
   // Un string es un parrafo; una lista se muestra como varios parrafos
   description: string | string[]
   stats?: EventStat[]
@@ -36,6 +37,7 @@ const events: CommunityEvent[] = [
     role: "Co-organizador",
     date: "28/03/2026",
     location: "Casa de las Culturas · Resistencia, Chaco",
+    locationUrl: "https://maps.app.goo.gl/wne3rjieS7XVL6kr9",
     description: [
       "Organizamos junto a Alejo Rojas la primera Meetup de v0 by Vercel en Resistencia, con el respaldo oficial de Vercel, para profundizar sobre los desafíos actuales en IA y Ciberseguridad.",
       "Fue la tercera meetup de la comunidad y la primera en la que me sumé a la organización. Cerramos la jornada con un espacio de networking para seguir conectando a la comunidad tecnológica de la región.",
@@ -136,12 +138,24 @@ export function Events() {
                       <span className="text-muted-foreground">·</span>
                       <span className="text-xs text-muted-foreground">{event.date}</span>
                     </div>
-                    {event.location && (
-                      <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground">
-                        <MapPin className="w-3.5 h-3.5 shrink-0" />
-                        {event.location}
-                      </div>
-                    )}
+                    {event.location &&
+                      (event.locationUrl ? (
+                        <a
+                          href={event.locationUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Ver ubicación en Google Maps"
+                          className="flex w-fit items-center gap-1.5 mt-1 text-xs text-muted-foreground underline-offset-2 transition-colors hover:text-primary hover:underline"
+                        >
+                          <MapPin className="w-3.5 h-3.5 shrink-0" />
+                          {event.location}
+                        </a>
+                      ) : (
+                        <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground">
+                          <MapPin className="w-3.5 h-3.5 shrink-0" />
+                          {event.location}
+                        </div>
+                      ))}
                   </div>
                 </div>
 
