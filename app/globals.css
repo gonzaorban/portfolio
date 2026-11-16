@@ -315,6 +315,17 @@
   text-shadow: 0 0 12px color-mix(in oklch, var(--primary) 45%, transparent);
 }
 
+/* Perfil de competencia (ICPC ID): ambar, acorde al acento de la tarjeta */
+.link-highlight {
+  color: var(--highlight);
+}
+
+.link-highlight:hover,
+.link-highlight:focus-visible {
+  color: color-mix(in oklch, var(--highlight) 80%, white);
+  text-shadow: 0 0 12px color-mix(in oklch, var(--highlight) 45%, transparent);
+}
+
 /* Links de perfil / externos neutros */
 .link-muted {
   color: var(--muted-foreground);
