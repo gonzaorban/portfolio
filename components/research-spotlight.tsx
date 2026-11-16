@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FlaskConical, Award, Linkedin, Microscope, CheckCircle2 } from "lucide-react"
+import { FlaskConical, Award, Linkedin, Microscope, CheckCircle2, Globe } from "lucide-react"
 
 export function ResearchSpotlight() {
   return (
@@ -55,8 +55,17 @@ export function ResearchSpotlight() {
               ))}
             </div>
 
-            {/* Simposio - LinkedIn */}
-            <div className="mt-4 pt-4 border-t border-border/30">
+            {/* Deploy + Simposio - LinkedIn */}
+            <div className="mt-4 pt-4 border-t border-border/30 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <a
+                href="https://cinaptic-ciberseguridad.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-anim link-live text-xs font-medium"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                Ver Deploy
+              </a>
               <a
                 href="https://www.linkedin.com/posts/gonzaorban_este-s%C3%A1bado-tuvimos-el-orgullo-de-exponer-activity-7469116587887845376-t5LU"
                 target="_blank"
