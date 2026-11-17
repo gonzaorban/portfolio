@@ -1,7 +1,18 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CalendarDays, MapPin, Linkedin, ExternalLink, Users, Mic, Handshake } from "lucide-react"
+import {
+  CalendarDays,
+  MapPin,
+  Linkedin,
+  ExternalLink,
+  Users,
+  Mic,
+  Handshake,
+  Flag,
+  Trophy,
+  GraduationCap,
+} from "lucide-react"
 
 interface EventLink {
   url: string
@@ -23,7 +34,7 @@ interface CommunityEvent {
   // Un string es un parrafo; una lista se muestra como varios parrafos
   description: string | string[]
   stats?: EventStat[]
-  // Fotos en public/events; la primera ocupa todo el ancho en celular
+  // Fotos en public/events; con 3, la primera ocupa todo el ancho en celular
   photos?: { src: string; alt: string }[]
   highlights?: { icon: typeof Users; text: string }[]
   icon: typeof Users
@@ -32,6 +43,62 @@ interface CommunityEvent {
 }
 
 const events: CommunityEvent[] = [
+  {
+    title: "CTF CoNaIISI 2026",
+    role: "Co-organizador",
+    date: "13/11/2026",
+    location: "UTN FRRe · Resistencia, Chaco",
+    locationUrl:
+      "https://www.google.com/maps/search/?api=1&query=UTN+Facultad+Regional+Resistencia%2C+French+414%2C+Resistencia%2C+Chaco",
+    description: [
+      "Organizamos junto a un gran equipo una competencia CTF presencial en el marco del CoNaIISI (Congreso Nacional de Ingeniería Informática y Sistemas de Información).",
+      "Fue nuestra primera vez organizando un evento así: muchas horas de trabajo y un enorme aprendizaje. Se sumaron desde personas sin experiencia previa en ciberseguridad hasta equipos de regionales de distintos puntos del país.",
+    ],
+    stats: [
+      { value: "12", label: "desafíos web" },
+      { value: "3 h", label: "de competencia" },
+      { value: "30+", label: "equipos" },
+      { value: "100+", label: "participantes" },
+    ],
+    photos: [
+      {
+        src: "/events/ctf-conaiisi-2026-publico.jpg",
+        alt: "Selfie con el aula llena de participantes del CTF CoNaIISI 2026",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-premiacion.jpg",
+        alt: "Equipo organizador frente al público durante la premiación, con el ranking proyectado",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-equipo.jpg",
+        alt: "Equipo organizador del CTF CoNaIISI 2026 posando frente al pizarrón",
+      },
+      // Fotos de la competencia con computadoras, en las filas de abajo
+      {
+        src: "/events/ctf-conaiisi-2026-laboratorio.jpg",
+        alt: "Equipos resolviendo los desafíos del CTF en un laboratorio de computadoras",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-laboratorio-2.jpg",
+        alt: "Participantes compitiendo en otro laboratorio de la facultad",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-aula.jpg",
+        alt: "Participantes con sus notebooks resolviendo desafíos en un aula",
+      },
+    ],
+    highlights: [
+      { icon: Trophy, text: "Entrega de premios a los primeros puestos y sorteo final" },
+      {
+        icon: Handshake,
+        text: "Con el soporte de Germán Nicolás Parisi y GISSIC a través de su plataforma SoftwareSeguro",
+      },
+      { icon: GraduationCap, text: "Con la colaboración de la UTN FRRe y de Maria Jose Ojeda" },
+    ],
+    icon: Flag,
+    accent: "highlight",
+    links: [{ url: "https://lnkd.in/p/dGQcKc6p", label: "LinkedIn", kind: "linkedin" }],
+  },
   {
     title: "v0 Meetup Resistencia",
     role: "Co-organizador",
@@ -161,7 +228,9 @@ export function Events() {
 
                 {/* Cifras del evento */}
                 {event.stats && (
-                  <dl className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+                  <dl
+                    className={`grid grid-cols-2 gap-3 mb-5 ${event.stats.length === 4 ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}
+                  >
                     {event.stats.map((stat) => (
                       <div key={stat.label} className="rounded-lg border border-border/40 bg-secondary/30 px-3 py-2.5">
                         <dt className="sr-only">{stat.label}</dt>
@@ -182,15 +251,18 @@ export function Events() {
                   ))}
                 </div>
 
+                {/* Multiplos de 3: 3 columnas desde sm (con 3, la primera va ancha en celular); si no, grilla de 2 */}
                 {event.photos && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-5">
+                  <div
+                    className={`grid grid-cols-2 gap-2 mb-5 ${event.photos.length % 3 === 0 ? "sm:grid-cols-3" : ""}`}
+                  >
                     {event.photos.map((photo, i) => (
                       <a
                         key={photo.src}
                         href={photo.src}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`block overflow-hidden rounded-lg border border-border/40 ${i === 0 ? "col-span-2 sm:col-span-1" : ""}`}
+                        className={`block overflow-hidden rounded-lg border border-border/40 ${i === 0 && event.photos!.length === 3 ? "col-span-2 sm:col-span-1" : ""}`}
                       >
                         <img
                           src={photo.src}
