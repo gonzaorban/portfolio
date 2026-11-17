@@ -88,7 +88,7 @@ const events: CommunityEvent[] = [
     ],
     icon: Flag,
     accent: "highlight",
-    links: [],
+    links: [{ url: "https://lnkd.in/p/dGQcKc6p", label: "LinkedIn", kind: "linkedin" }],
   },
   {
     title: "v0 Meetup Resistencia",
