@@ -48,6 +48,8 @@ const events: CommunityEvent[] = [
     role: "Co-organizador",
     date: "13/11/2026",
     location: "UTN FRRe · Resistencia, Chaco",
+    locationUrl:
+      "https://www.google.com/maps/search/?api=1&query=UTN+Facultad+Regional+Resistencia%2C+French+414%2C+Resistencia%2C+Chaco",
     description: [
       "Organizamos junto a un gran equipo una competencia CTF presencial en el marco del CoNaIISI (Congreso Nacional de Ingeniería Informática y Sistemas de Información).",
       "Fue nuestra primera vez organizando un evento así: muchas horas de trabajo y un enorme aprendizaje. Se sumaron desde personas sin experiencia previa en ciberseguridad hasta equipos de regionales de distintos puntos del país.",
