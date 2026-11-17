@@ -12,6 +12,7 @@ const sections = [
   { id: "eventos", label: "Eventos" },
   { id: "investigacion", label: "Investigación" },
   { id: "ciberseguridad", label: "Ciberseguridad" },
+  { id: "certificaciones", label: "Certificaciones" },
   { id: "stack", label: "Stack" },
   { id: "contacto", label: "Contacto" },
 ]
@@ -111,7 +112,7 @@ export function SiteNav() {
 
         <div className="flex items-center gap-2">
           {/* Desktop: todas las secciones en linea */}
-          <ul className="hidden items-center gap-1 font-mono lg:flex">
+          <ul className="hidden items-center gap-1 font-mono xl:flex">
             {sections.map((section, index) => {
               const isActive = active === section.id
               return (
@@ -161,7 +162,7 @@ export function SiteNav() {
             aria-expanded={menuOpen}
             aria-controls="menu-secciones"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-border/50 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary xl:hidden"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -176,7 +177,7 @@ export function SiteNav() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="container-wide overflow-hidden font-mono lg:hidden"
+            className="container-wide overflow-hidden font-mono xl:hidden"
           >
             {sections.map((section, index) => {
               const isActive = active === section.id

@@ -1,6 +1,7 @@
 import { Hero } from "@/components/hero"
 import { ResearchSpotlight } from "@/components/research-spotlight"
 import { CybersecurityHub } from "@/components/cybersecurity-hub"
+import { Certifications } from "@/components/certifications"
 import { ProjectBento } from "@/components/project-bento"
 import { Competitions } from "@/components/competitions"
 import { Events } from "@/components/events"
@@ -17,6 +18,7 @@ export default function Home() {
       <Events />
       <ResearchSpotlight />
       <CybersecurityHub />
+      <Certifications />
       <TechStack />
       <Contact />
       <Footer />
