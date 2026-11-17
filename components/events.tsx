@@ -46,7 +46,7 @@ const events: CommunityEvent[] = [
   {
     title: "CTF CoNaIISI 2026",
     role: "Co-organizador",
-    date: "2026",
+    date: "13/11/2026",
     location: "UTN FRRe · Resistencia, Chaco",
     description: [
       "Organizamos junto a un gran equipo una competencia CTF presencial en el marco del CoNaIISI (Congreso Nacional de Ingeniería Informática y Sistemas de Información).",
