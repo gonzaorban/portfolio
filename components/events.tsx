@@ -66,6 +66,15 @@ const events: CommunityEvent[] = [
         alt: "Selfie con el aula llena de participantes del CTF CoNaIISI 2026",
       },
       {
+        src: "/events/ctf-conaiisi-2026-premiacion.jpg",
+        alt: "Equipo organizador frente al público durante la premiación, con el ranking proyectado",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-equipo.jpg",
+        alt: "Equipo organizador del CTF CoNaIISI 2026 posando frente al pizarrón",
+      },
+      // Fotos de la competencia con computadoras, en las filas de abajo
+      {
         src: "/events/ctf-conaiisi-2026-laboratorio.jpg",
         alt: "Equipos resolviendo los desafíos del CTF en un laboratorio de computadoras",
       },
@@ -76,14 +85,6 @@ const events: CommunityEvent[] = [
       {
         src: "/events/ctf-conaiisi-2026-aula.jpg",
         alt: "Participantes con sus notebooks resolviendo desafíos en un aula",
-      },
-      {
-        src: "/events/ctf-conaiisi-2026-premiacion.jpg",
-        alt: "Equipo organizador frente al público durante la premiación, con el ranking proyectado",
-      },
-      {
-        src: "/events/ctf-conaiisi-2026-equipo.jpg",
-        alt: "Equipo organizador del CTF CoNaIISI 2026 posando frente al pizarrón",
       },
     ],
     highlights: [
