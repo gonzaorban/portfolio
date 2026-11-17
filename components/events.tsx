@@ -66,8 +66,16 @@ const events: CommunityEvent[] = [
         alt: "Selfie con el aula llena de participantes del CTF CoNaIISI 2026",
       },
       {
-        src: "/events/ctf-conaiisi-2026-competencia.jpg",
-        alt: "Collage de equipos resolviendo los desafíos del CTF en distintas aulas y laboratorios",
+        src: "/events/ctf-conaiisi-2026-laboratorio.jpg",
+        alt: "Equipos resolviendo los desafíos del CTF en un laboratorio de computadoras",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-laboratorio-2.jpg",
+        alt: "Participantes compitiendo en otro laboratorio de la facultad",
+      },
+      {
+        src: "/events/ctf-conaiisi-2026-aula.jpg",
+        alt: "Participantes con sus notebooks resolviendo desafíos en un aula",
       },
       {
         src: "/events/ctf-conaiisi-2026-premiacion.jpg",
@@ -242,10 +250,10 @@ export function Events() {
                   ))}
                 </div>
 
-                {/* Con 3 fotos: la primera ancha en celular y 3 columnas despues; con otra cantidad, grilla de 2 */}
+                {/* Multiplos de 3: 3 columnas desde sm (con 3, la primera va ancha en celular); si no, grilla de 2 */}
                 {event.photos && (
                   <div
-                    className={`grid grid-cols-2 gap-2 mb-5 ${event.photos.length === 3 ? "sm:grid-cols-3" : ""}`}
+                    className={`grid grid-cols-2 gap-2 mb-5 ${event.photos.length % 3 === 0 ? "sm:grid-cols-3" : ""}`}
                   >
                     {event.photos.map((photo, i) => (
                       <a
